@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package post;
+option go_package = ".;post";
+
+message DeleteI {
+  string name = 1;
+}
+
+message DeleteO {
+  string message = 1;
+}

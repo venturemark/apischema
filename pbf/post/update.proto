@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package post;
+option go_package = ".;post";
+
+message UpdateI {
+  string name = 1;
+}
+
+message UpdateO {
+  string message = 1;
+}

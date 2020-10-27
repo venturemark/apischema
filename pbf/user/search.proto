@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package api;
+
+message SearchI {
+  string name = 1;
+}
+
+message SearchO {
+  string message = 1;
+}
