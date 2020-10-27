@@ -1,0 +1,2 @@
+# apischema
+grpc api schema
