@@ -77,7 +77,7 @@ jobs:
       - name: Go Mod Tidy
         working-directory: "${{ runner.temp }}/venturemark/apigengo/"
         run: |
-          if [[ -e go.sum ]; then
+          if [[ -e go.sum ]]; then
             rm -f go.sum
             go mod tidy
           fi
