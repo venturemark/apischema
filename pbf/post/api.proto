@@ -13,5 +13,4 @@ service API {
   rpc Delete(DeleteI) returns (DeleteO) {}
   rpc Search(SearchI) returns (SearchO) {}
   rpc Update(UpdateI) returns (UpdateO) {}
-  rpc Test(UpdateI) returns (UpdateO) {}
 }
