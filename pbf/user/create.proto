@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package api;
+
+message CreateI {
+  string name = 1;
+}
+
+message CreateO {
+  string message = 1;
+}

@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package api;
+
+message DeleteI {
+  string name = 1;
+}
+
+message DeleteO {
+  string message = 1;
+}

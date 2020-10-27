@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package post;
+option go_package = ".;post";
+
+import "create.proto";
+import "delete.proto";
+import "search.proto";
+import "update.proto";
+
+service API {
+  rpc Create(CreateI) returns (CreateO) {}
+  rpc Delete(DeleteI) returns (DeleteO) {}
+  rpc Search(SearchI) returns (SearchO) {}
+  rpc Update(UpdateI) returns (UpdateO) {}
+}
