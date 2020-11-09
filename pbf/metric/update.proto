@@ -1,6 +1,7 @@
 syntax = "proto3";
 
-package api;
+package metric;
+option go_package = ".;metric";
 
 message UpdateI {
   string name = 1;
