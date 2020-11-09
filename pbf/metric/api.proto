@@ -3,10 +3,10 @@ syntax = "proto3";
 package metric;
 option go_package = ".;metric";
 
-import "create.proto";
-import "delete.proto";
-import "search.proto";
-import "update.proto";
+import "pbf/metric/create.proto";
+import "pbf/metric/delete.proto";
+import "pbf/metric/search.proto";
+import "pbf/metric/update.proto";
 
 service API {
   rpc Create(CreateI) returns (CreateO) {}
