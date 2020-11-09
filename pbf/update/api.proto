@@ -3,10 +3,10 @@ syntax = "proto3";
 package update;
 option go_package = ".;update";
 
-import "create.proto";
-import "delete.proto";
-import "search.proto";
-import "update.proto";
+import "pbf/update/create.proto";
+import "pbf/update/delete.proto";
+import "pbf/update/search.proto";
+import "pbf/update/update.proto";
 
 service API {
   rpc Create(CreateI) returns (CreateO) {}
