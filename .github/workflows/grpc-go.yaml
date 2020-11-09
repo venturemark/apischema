@@ -2,7 +2,7 @@
 # Do not edit. This file was generated via the "workflow" command line tool.
 # More information about the tool can be found at github.com/xh3b4sd/workflow.
 #
-#     workflow generate grpcgo
+#     workflow create grpcgo -o venturemark -r apigengo -s
 #
 
 name: gprc-go
@@ -31,7 +31,7 @@ jobs:
       - name: Install Protoc Binary
         working-directory: ${{ runner.temp }}
         run: |
-          curl -LO "https://github.com/protocolbuffers/protobuf/releases/download/v3.13.0/protoc-3.13.0-linux-x86_64.zip"
+          curl -LOs https://github.com/protocolbuffers/protobuf/releases/download/v3.13.0/protoc-3.13.0-linux-x86_64.zip
           unzip protoc-3.13.0-linux-x86_64.zip
           echo "${{ runner.temp }}/bin" >> $GITHUB_PATH
 
@@ -72,6 +72,7 @@ jobs:
       - name: Generate Go Code
         run: |
           go get github.com/xh3b4sd/pag
+          rm -rf ${{ runner.temp }}/venturemark/apigengo/pkg/
           pag generate golang -d ${{ runner.temp }}/venturemark/apigengo/pkg/
 
       - name: Go Mod Tidy
