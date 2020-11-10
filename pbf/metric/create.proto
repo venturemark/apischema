@@ -3,7 +3,7 @@ syntax = "proto3";
 package metric;
 option go_package = ".;metric";
 
-// CreateI is the input to create a metric. That is persisting datapoints
+// CreateI is the input to create metrics. That is persisting datapoints
 // associated with an update. Below is an example JSON representation showing an
 // emitted datapoint for the dimensions x and y, where x represents a Unix
 // Timestamp and y represents a numeric value given by the user at that time.
