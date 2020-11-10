@@ -3,6 +3,9 @@ syntax = "proto3";
 package metric;
 option go_package = ".;metric";
 
+// SearchI is the input to search metrics. That is finding datapoints associated
+// with an update.
+
 message SearchI {
   string name = 1;
 }
