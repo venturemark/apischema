@@ -3,10 +3,57 @@ syntax = "proto3";
 package metric;
 option go_package = ".;metric";
 
+// SearchI is the input to search metrics. That is looking up datapoints
+// associated with an update. Below is an example JSON representation showing a
+// filter query meant to fetch all metric objects associated to the specified
+// update.
+//
+//     {
+//         "filter": {
+//             "property": [
+//                 {
+//                     "update_id": "upd-j3o45"
+//                 }
+//             ]
+//         }
+//     }
+//
 message SearchI {
-  string name = 1;
+  message Filter {
+    message Chunking {
+      string pointer = 1;
+      string perpage = 2;
+    }
+    message Property {
+      string metric_id = 1;
+      string timestamp = 2;
+      string update_id = 3;
+    }
+
+    Chunking chunking = 1;
+    repeated string operator = 2;
+    repeated Property property = 3;
+  }
+
+  Filter filter = 1;
 }
 
 message SearchO {
-  string message = 1;
+  message Filter {
+    message Chunking {
+      string pointer = 1;
+      string perpage = 2;
+    }
+
+    Chunking chunking = 1;
+  }
+  message Result {
+    repeated int64 datapoint = 1;
+    string metric_id = 2;
+    string timestamp = 3;
+    string update_id = 4;
+  }
+
+  Filter filter = 1;
+  Result result = 2;
 }
