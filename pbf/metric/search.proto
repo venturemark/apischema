@@ -25,7 +25,6 @@ message SearchI {
       string perpage = 2;
     }
     message Property {
-      string metric_id = 1;
       string timestamp = 2;
       string update_id = 3;
     }
@@ -49,7 +48,6 @@ message SearchO {
   }
   message Result {
     repeated int64 datapoint = 1;
-    string metric_id = 2;
     string timestamp = 3;
     string update_id = 4;
   }
