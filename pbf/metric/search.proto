@@ -4,15 +4,15 @@ package metric;
 option go_package = ".;metric";
 
 // SearchI is the input to search metrics. That is looking up datapoints
-// associated with an update. Below is an example JSON representation showing a
-// filter query meant to fetch all metric objects associated to the specified
-// update.
+// associated with a timeline. Below is an example JSON representation showing a
+// filter query meant to fetch all metric objects associated with the specified
+// timeline.
 //
 //     {
 //         "filter": {
 //             "property": [
 //                 {
-//                     "update_id": "upd-j3o45"
+//                     "timeline_id": "tml-kjw44"
 //                 }
 //             ]
 //         }
@@ -25,8 +25,8 @@ message SearchI {
       string perpage = 2;
     }
     message Property {
+      string timeline_id = 1;
       string timestamp = 2;
-      string update_id = 3;
     }
 
     Chunking chunking = 1;
@@ -48,8 +48,8 @@ message SearchO {
   }
   message Result {
     repeated int64 datapoint = 1;
+    string timeline_id = 2;
     string timestamp = 3;
-    string update_id = 4;
   }
 
   Filter filter = 1;
