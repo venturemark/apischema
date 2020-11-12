@@ -50,6 +50,7 @@ message SearchO {
     repeated int64 datapoint = 1;
     string timeline_id = 2;
     string timestamp = 3;
+    string update_id = 4;
   }
 
   Filter filter = 1;
