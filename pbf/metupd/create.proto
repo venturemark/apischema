@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package metupd;
+option go_package = ".;metupd";
+
+// CreateI is the input for creating metric updates. That is persisting
+// datapoints and text which belong together in order to form a metric update.
+// Metrics and updates are separate resources. For lifecycle events like
+// creation and deletion we want to manage a single entity. That is to reduce
+// operational complexity and thus minimize failure scenarious. Otherwise
+// creating metrics and updates separately would imply the technical challenge
+// to reliably associate each resource with the other.
+//
+// A timeline can have many metric updates. A timeline thus can have many
+// metrics and many updates each while any metric is only associated with a
+// single update respectively. Below is an example JSON representation showing
+// an emitted metric update for the dimensions x and y, where x represents a
+// unix timestamp and y represents a numeric value given by the user at that
+// time. Additionally the user's written update in natural language is provided.
+//
+//     {
+//         "datapoint": [
+//             1604959525,
+//             85
+//         ],
+//         "text": "Lorem ipsum ...",
+//         "timeline": "tml-kn433"
+//     }
+//
+message CreateI {
+  // datapoint contains the metric part of the metric update. The datapoints
+  // provided by convention are a list of coordinates. Providing [x, y] may be
+  // interpreted as datapoints for x and y dimensions on a graph.
+  repeated int64 datapoint = 1;
+  // text contains the update part of the metric update. The string provided is
+  // the user's content expressing their update in written form.
+  string text = 2;
+  // timeline is the identifier used to associate the metric update with the
+  // specified timeline.
+  string timeline = 3;
+}
+
+// CreateO is the output for creating metric updates. Only the exact unix
+// timestamp of creation is returned when successfully creating a metric update.
+//
+//     {
+//         "timestamp": "1604959525"
+//     }
+//
+message CreateO {
+  // timestamp is the time at which the metric update got created. The timestamp
+  // is a unix timestamp in seconds normalized to the UTC timezone.
+  string timestamp = 1;
+}

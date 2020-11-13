@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package metupd;
+option go_package = ".;metupd";
+
+// Metric updates are not supported to be deleted at this point in time. The
+// apischema and its corresponding implementation might change that in the
+// future.
+
+message DeleteI {}
+message DeleteO {}

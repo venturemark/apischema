@@ -91,7 +91,6 @@ associated with the provided update ID and timestamps.
 
 Filter operators we support are defined as follows.
 
-- `and` expresses that all properties must match within requested data objects
 - `any` expresses that any property can match within requested data objects
 - `bet` expresses that only properties within the given range must match within
   requested data objects

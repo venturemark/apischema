@@ -3,16 +3,16 @@ syntax = "proto3";
 package metric;
 option go_package = ".;metric";
 
-// SearchI is the input to search metrics. That is looking up datapoints
-// associated with an update. Below is an example JSON representation showing a
-// filter query meant to fetch all metric objects associated to the specified
-// update.
+// SearchI is the input for searching metrics. That is looking up datapoints
+// associated with a timeline. Below is an example JSON representation showing a
+// filter query meant to fetch all metrics associated with the specified
+// timeline.
 //
 //     {
 //         "filter": {
 //             "property": [
 //                 {
-//                     "update_id": "upd-j3o45"
+//                     "timeline": "tml-kjw44"
 //                 }
 //             ]
 //         }
@@ -25,8 +25,8 @@ message SearchI {
       string perpage = 2;
     }
     message Property {
+      string timeline = 1;
       string timestamp = 2;
-      string update_id = 3;
     }
 
     Chunking chunking = 1;
@@ -37,6 +37,25 @@ message SearchI {
   Filter filter = 1;
 }
 
+// SearchO is the output for searching metrics. That is looking up datapoints
+// associated with a timeline. Below is an example JSON representation showing a
+// list of results when fetching all metrics associated with the specified
+// timeline.
+//
+//     {
+//         "result": [
+//             {
+//                 "datapoint": [
+//                     1604959525,
+//                     85
+//                 ],
+//                 "timeline": "tml-kn433",
+//                 "timestamp": "1604959525"
+//             },
+//             ...
+//         ]
+//     }
+//
 message SearchO {
   message Filter {
     message Chunking {
@@ -48,10 +67,10 @@ message SearchO {
   }
   message Result {
     repeated int64 datapoint = 1;
-    string timestamp = 3;
-    string update_id = 4;
+    string timeline = 3;
+    string timestamp = 4;
   }
 
   Filter filter = 1;
-  Result result = 2;
+  repeated Result result = 2;
 }
