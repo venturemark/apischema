@@ -44,11 +44,11 @@ message CreateI {
 // timestamp of creation is returned when successfully creating a metric update.
 //
 //     {
-//         "timestamp": "1604959525"
+//         "timestamp": 1604959525
 //     }
 //
 message CreateO {
   // timestamp is the time at which the metric update got created. The timestamp
   // is a unix timestamp in seconds normalized to the UTC timezone.
-  string timestamp = 1;
+  int64 timestamp = 1;
 }
