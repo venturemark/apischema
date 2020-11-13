@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package metupd;
+option go_package = ".;metupd";
+
+// Metric updates are not meant to be searched on their own. Searching a metric
+// update means to search a metric and an update separately. See pbf/metric and
+// pbf/update for more information.
+
+message SearchI {}
+message SearchO {}

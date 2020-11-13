@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package metupd;
+option go_package = ".;metupd";
+
+// Metric updates are not meant to be updated on their own. Updating a metric
+// update means to update a metric and an update separately. See pbf/metric and
+// pbf/update for more information.
+
+message UpdateI {}
+message UpdateO {}

@@ -3,10 +3,8 @@ syntax = "proto3";
 package update;
 option go_package = ".;update";
 
-message SearchI {
-  string name = 1;
-}
+// Updates are not supported to be searched at this point in time. The apischema
+// and its corresponding implementation might change that in the future.
 
-message SearchO {
-  string message = 1;
-}
+message SearchI {}
+message SearchO {}

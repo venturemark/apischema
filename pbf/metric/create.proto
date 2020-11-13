@@ -3,42 +3,8 @@ syntax = "proto3";
 package metric;
 option go_package = ".;metric";
 
-// CreateI is the input for creating metrics. That is persisting datapoints
-// associated with an update. A timeline can have many metrics. A timeline can
-// have many updates. Though any metric is only associated with a single update.
-// Below is an example JSON representation showing an emitted datapoint for the
-// dimensions x and y, where x represents a Unix Timestamp and y represents a
-// numeric value given by the user at that time.
-//
-//     {
-//         "datapoint": [
-//             1604959525,
-//             85
-//         ],
-//         "timeline_id": "tml-kn433",
-//         "update_id": "upd-j3o45"
-//     }
-//
-message CreateI {
-  // datapoint is a list of datapoints provided by convention. Providing [x, y]
-  // may be interpreted as datapoints for x and y dimensions on a graph.
-  repeated int64 datapoint = 1;
-  // timeline_id is the identifier used to associate the created metric with the
-  // specified timeline.
-  string timeline_id = 2;
-  // update_id is the identifier used to associate the created metric with the
-  // specified update.
-  string update_id = 3;
-}
+// Metrics are not meant to be created on their own. Creating a metric means to
+// create a metric update. See pbf/metupd for more information.
 
-// CreateO is the output for creating metrics.
-//
-//     {
-//         "timestamp": "1604959525"
-//     }
-//
-message CreateO {
-  // timestamp is the time at which the datapoints of the new metric got
-  // emitted.
-  string timestamp = 1;
-}
+message CreateI {}
+message CreateO {}

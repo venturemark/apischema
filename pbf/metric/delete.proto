@@ -3,10 +3,8 @@ syntax = "proto3";
 package metric;
 option go_package = ".;metric";
 
-message DeleteI {
-  string name = 1;
-}
+// Metrics are not meant to be deleted on their own. Deleting a metric means to
+// delete a metric update. See pbf/metupd for more information.
 
-message DeleteO {
-  string message = 1;
-}
+message DeleteI {}
+message DeleteO {}

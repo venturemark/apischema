@@ -3,10 +3,8 @@ syntax = "proto3";
 package update;
 option go_package = ".;update";
 
-message CreateI {
-  string name = 1;
-}
+// Updates are not meant to be created on their own. Creating an update means to
+// create a metric update. See pbf/metupd for more information.
 
-message CreateO {
-  string message = 1;
-}
+message CreateI {}
+message CreateO {}
