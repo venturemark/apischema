@@ -45,8 +45,8 @@ message SearchI {
 //     {
 //         "result": [
 //             {
-//                 "datapoint": [
-//                     1604959525,
+//                 "yaxis": [
+//                     32,
 //                     85
 //                 ],
 //                 "timeline": "tml-kn433",
@@ -66,7 +66,7 @@ message SearchO {
     Chunking chunking = 1;
   }
   message Result {
-    repeated int64 datapoint = 1;
+    repeated int64 yaxis = 1;
     string timeline = 3;
     int64 timestamp = 4;
   }
