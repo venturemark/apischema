@@ -26,7 +26,7 @@ message SearchI {
     }
     message Property {
       string timeline = 1;
-      string timestamp = 2;
+      int64 timestamp = 2;
     }
 
     Chunking chunking = 1;
@@ -50,7 +50,7 @@ message SearchI {
 //                     85
 //                 ],
 //                 "timeline": "tml-kn433",
-//                 "timestamp": "1604959525"
+//                 "timestamp": 1604959525
 //             },
 //             ...
 //         ]
@@ -68,7 +68,7 @@ message SearchO {
   message Result {
     repeated int64 datapoint = 1;
     string timeline = 3;
-    string timestamp = 4;
+    int64 timestamp = 4;
   }
 
   Filter filter = 1;
