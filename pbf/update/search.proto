@@ -3,8 +3,71 @@ syntax = "proto3";
 package update;
 option go_package = ".;update";
 
-// Updates are not supported to be searched at this point in time. The apischema
-// and its corresponding implementation might change that in the future.
+// SearchI is the input for searching updates. That is looking up the user's
+// natural language in written form associated with a timeline. Below is an
+// example JSON representation showing a filter query meant to fetch all updates
+// associated with the specified timeline.
+//
+//     {
+//         "filter": {
+//             "property": [
+//                 {
+//                     "timeline": "tml-kjw44"
+//                 }
+//             ]
+//         }
+//     }
+//
+message SearchI {
+  message Filter {
+    message Chunking {
+      string pointer = 1;
+      string perpage = 2;
+    }
+    message Property {
+      string timeline = 1;
+      int64 timestamp = 2;
+    }
 
-message SearchI {}
-message SearchO {}
+    Chunking chunking = 1;
+    repeated string operator = 2;
+    repeated Property property = 3;
+  }
+
+  Filter filter = 1;
+}
+
+// SearchO is the input for searching updates. That is looking up the user's
+// natural language in written form associated with a timeline. Below is an
+// example JSON representation showing a list of results when fetching all
+// updates associated with the specified timeline.
+//
+//     {
+//         "result": [
+//             {
+//                 "text": "Lorem ipsum ...",
+//                 "timeline": "tml-kn433",
+//                 "timestamp": 1604959525
+//             },
+//             ...
+//         ]
+//     }
+//
+message SearchO {
+  message Filter {
+    message Chunking {
+      string pointer = 1;
+      string perpage = 2;
+    }
+
+    Chunking chunking = 1;
+  }
+  message Result {
+    string text = 1;
+    string timeline = 2;
+    int64 timestamp = 3;
+  }
+
+  Filter filter = 1;
+  repeated Result result = 2;
+}
