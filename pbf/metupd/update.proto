@@ -47,15 +47,19 @@ message UpdateI {
   int64 timestamp = 4;
 }
 
-// UpdateO is the output for updating metric updates. Only the exact unix
-// timestamp of creation is returned when successfully updating a metric update.
+// UpdateO is the output for updating metric updates. The response will indicate
+// which parts of the metric update got in fact updated.
 //
 //     {
-//         "timestamp": 1604959525
+//         "metric": true,
+//         "update": false
 //     }
 //
 message UpdateO {
-  // timestamp is the time at which the metric update got created. The timestamp
-  // is a unix timestamp in seconds normalized to the UTC timezone.
-  int64 timestamp = 1;
+  // metric expresses if the metrics associated with the metric update got
+  // updated or not.
+  bool metric = 1;
+  // update expresses if the update associated with the metric update got
+  // updated or not.
+  bool update = 2;
 }
