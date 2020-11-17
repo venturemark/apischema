@@ -3,74 +3,103 @@ syntax = "proto3";
 package metric;
 option go_package = ".;metric";
 
-// SearchI is the input for searching metrics. That is looking up datapoints
-// associated with a timeline. Below is an example JSON representation showing a
-// filter query meant to fetch all metrics associated with the specified
-// timeline.
+// SearchI is the input for searching metrics. That is looking up coordinates
+// within a multi-dimensional space associated with a timeline. Below is an
+// example to fetch all metrics associated with the specified timeline.
 //
 //     {
-//         "filter": {
-//             "property": [
-//                 {
-//                     "timeline": "tml-kjw44"
+//         "api": {
+//             "chunking": {
+//                 "perpage": "100",
+//                 "pointer": "300"
+//             }
+//         },
+//         "obj": [
+//             {
+//                 "metadata": {
+//                     "venturemark.co/timeline": "tml-kn433"
 //                 }
-//             ]
-//         }
+//             }
+//         ]
 //     }
 //
 message SearchI {
-  message Filter {
-    message Chunking {
-      string pointer = 1;
-      string perpage = 2;
-    }
-    message Property {
-      string timeline = 1;
-      int64 timestamp = 2;
-    }
-
-    Chunking chunking = 1;
-    repeated string operator = 2;
-    repeated Property property = 3;
-  }
-
-  Filter filter = 1;
+  SearchI_API api = 1;
+  repeated SearchI_Obj obj = 2;
 }
 
-// SearchO is the output for searching metrics. That is looking up datapoints
-// associated with a timeline. Below is an example JSON representation showing a
-// list of results when fetching all metrics associated with the specified
-// timeline.
+message SearchI_API {
+  SearchI_API_Chunking chunking = 1;
+  repeated string operator = 2;
+}
+
+message SearchI_API_Chunking {
+  string pointer = 1;
+  string perpage = 2;
+}
+
+message SearchI_Obj {
+  map<string, string> metadata = 1;
+  repeated SearchI_Obj_Property property = 2;
+}
+
+message SearchI_Obj_Property {}
+
+// SearchO is the output for searching metrics. Below is an example showing a
+// list of objects associated with the requested timeline.
 //
 //     {
-//         "result": [
+//         "api": {
+//             "chunking": {
+//                 "perpage": "100",
+//                 "pointer": "300"
+//             }
+//         },
+//         "obj": [
 //             {
-//                 "yaxis": [
-//                     32,
-//                     85
-//                 ],
-//                 "timeline": "tml-kn433",
-//                 "timestamp": 1604959525
+//                 "metadata": {
+//                     ...
+//                 },
+//                 "property": {
+//                     "data": [
+//                         {
+//                             "space": "y"
+//                             "value": [
+//                                 32,
+//                                 85
+//                             ]
+//                         }
+//                     ]
+//                 }
 //             },
 //             ...
 //         ]
 //     }
 //
 message SearchO {
-  message Filter {
-    message Chunking {
-      string pointer = 1;
-      string perpage = 2;
-    }
+  SearchO_API api = 1;
+  repeated SearchO_Obj obj = 2;
+}
 
-    Chunking chunking = 1;
-  }
-  message Result {
-    repeated int64 yaxis = 1;
-    string timeline = 2;
-    int64 timestamp = 3;
-  }
+message SearchO_API {
+  SearchO_API_Chunking chunking = 1;
+}
 
-  Filter filter = 1;
-  repeated Result result = 2;
+message SearchO_API_Chunking {
+  string pointer = 1;
+  string perpage = 2;
+}
+
+message SearchO_Obj {
+  map<string, string> metadata = 1;
+  repeated SearchO_Obj_Property property = 2;
+}
+
+message SearchO_Obj_Property {
+  repeated SearchO_Obj_Property_Data data = 1;
+}
+
+message SearchO_Obj_Property_Data {
+  string space = 1;
+  repeated int64 value = 2;
 }

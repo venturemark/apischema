@@ -4,70 +4,91 @@ package update;
 option go_package = ".;update";
 
 // SearchI is the input for searching updates. That is looking up the user's
-// natural language in written form associated with a timeline. Below is an
-// example JSON representation showing a filter query meant to fetch all updates
-// associated with the specified timeline.
+// written update in natural language associated with a timeline. Below is an
+// example to fetch all updates associated with the specified timeline.
 //
 //     {
-//         "filter": {
-//             "property": [
-//                 {
-//                     "timeline": "tml-kjw44"
+//         "api": {
+//             "chunking": {
+//                 "perpage": "100",
+//                 "pointer": "300"
+//             }
+//         },
+//         "obj": [
+//             {
+//                 "metadata": {
+//                     "venturemark.co/timeline": "tml-kn433"
 //                 }
-//             ]
-//         }
+//             }
+//         ]
 //     }
 //
 message SearchI {
-  message Filter {
-    message Chunking {
-      string pointer = 1;
-      string perpage = 2;
-    }
-    message Property {
-      string timeline = 1;
-      int64 timestamp = 2;
-    }
-
-    Chunking chunking = 1;
-    repeated string operator = 2;
-    repeated Property property = 3;
-  }
-
-  Filter filter = 1;
+  SearchI_API api = 1;
+  repeated SearchI_Obj obj = 2;
 }
 
-// SearchO is the input for searching updates. That is looking up the user's
-// natural language in written form associated with a timeline. Below is an
-// example JSON representation showing a list of results when fetching all
-// updates associated with the specified timeline.
+message SearchI_API {
+  SearchI_API_Chunking chunking = 1;
+  repeated string operator = 2;
+}
+
+message SearchI_API_Chunking {
+  string pointer = 1;
+  string perpage = 2;
+}
+
+message SearchI_Obj {
+  map<string, string> metadata = 1;
+  repeated SearchI_Obj_Property property = 2;
+}
+
+message SearchI_Obj_Property {}
+
+// SearchO is the output for searching updates. Below is an example showing a
+// list of objects associated with the requested timeline.
 //
 //     {
-//         "result": [
+//         "api": {
+//             "chunking": {
+//                 "perpage": "100",
+//                 "pointer": "300"
+//             }
+//         },
+//         "obj": [
 //             {
-//                 "text": "Lorem ipsum ...",
-//                 "timeline": "tml-kn433",
-//                 "timestamp": 1604959525
+//                 "metadata": {
+//                     ...
+//                 },
+//                 "property": {
+//                     "text": "Lorem ipsum ..."
+//                 }
 //             },
 //             ...
 //         ]
 //     }
 //
 message SearchO {
-  message Filter {
-    message Chunking {
-      string pointer = 1;
-      string perpage = 2;
-    }
+  SearchO_API api = 1;
+  repeated SearchO_Obj obj = 2;
+}
 
-    Chunking chunking = 1;
-  }
-  message Result {
-    string text = 1;
-    string timeline = 2;
-    int64 timestamp = 3;
-  }
+message SearchO_API {
+  SearchO_API_Chunking chunking = 1;
+}
 
-  Filter filter = 1;
-  repeated Result result = 2;
+message SearchO_API_Chunking {
+  string pointer = 1;
+  string perpage = 2;
+}
+
+message SearchO_Obj {
+  map<string, string> metadata = 1;
+  repeated SearchO_Obj_Property property = 2;
+}
+
+message SearchO_Obj_Property {
+  // text contains the update part of the metric update. The string provided is
+  // the user's natural language in written form.
+  string text = 1;
 }
