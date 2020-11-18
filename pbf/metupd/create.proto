@@ -50,7 +50,7 @@ message CreateI_API {}
 
 message CreateI_Obj {
   map<string, string> metadata = 1;
-  repeated CreateI_Obj_Property property = 2;
+  CreateI_Obj_Property property = 2;
 }
 
 message CreateI_Obj_Property {

@@ -38,7 +38,7 @@ message UpdateI_API {}
 
 message UpdateI_Obj {
   map<string, string> metadata = 1;
-  repeated UpdateI_Obj_Property property = 2;
+  UpdateI_Obj_Property property = 2;
 }
 
 message UpdateI_Obj_Property {
