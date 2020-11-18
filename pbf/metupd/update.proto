@@ -65,5 +65,12 @@ message UpdateI_Obj_Property_Data {
 //     }
 //
 message UpdateO {
+  UpdateO_API api = 1;
+  UpdateO_Obj obj = 2;
+}
+
+message UpdateO_API {}
+
+message UpdateO_Obj {
   map<string, string> metadata = 1;
 }
