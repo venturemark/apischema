@@ -76,5 +76,12 @@ message CreateI_Obj_Property_Data {
 //     }
 //
 message CreateO {
+  CreateO_API api = 1;
+  CreateO_Obj obj = 2;
+}
+
+message CreateO_API {}
+
+message CreateO_Obj {
   map<string, string> metadata = 1;
 }
