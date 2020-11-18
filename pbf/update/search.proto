@@ -40,7 +40,7 @@ message SearchI_API_Chunking {
 
 message SearchI_Obj {
   map<string, string> metadata = 1;
-  repeated SearchI_Obj_Property property = 2;
+  SearchI_Obj_Property property = 2;
 }
 
 message SearchI_Obj_Property {}
@@ -84,7 +84,7 @@ message SearchO_API_Chunking {
 
 message SearchO_Obj {
   map<string, string> metadata = 1;
-  repeated SearchO_Obj_Property property = 2;
+  SearchO_Obj_Property property = 2;
 }
 
 message SearchO_Obj_Property {
