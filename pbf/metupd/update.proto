@@ -48,7 +48,7 @@ message UpdateI_Obj_Property {
 
 message UpdateI_Obj_Property_Data {
   string space = 1;
-  repeated int64 value = 2;
+  repeated double value = 2;
 }
 
 // UpdateO is the output for updating metric updates. The response will contain
