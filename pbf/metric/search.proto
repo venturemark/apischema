@@ -101,5 +101,5 @@ message SearchO_Obj_Property {
 
 message SearchO_Obj_Property_Data {
   string space = 1;
-  repeated int64 value = 2;
+  repeated double value = 2;
 }

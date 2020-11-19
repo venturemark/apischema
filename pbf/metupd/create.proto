@@ -60,7 +60,7 @@ message CreateI_Obj_Property {
 
 message CreateI_Obj_Property_Data {
   string space = 1;
-  repeated int64 value = 2;
+  repeated double value = 2;
 }
 
 // CreateO is the output for creating metric updates. Only the exact unix
