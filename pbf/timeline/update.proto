@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package timeline;
+option go_package = ".;timeline";
+
+// UpdateI is the input for updating timelines. Only the name of a timeline may
+// change.
+//
+//     {
+//         "obj": {
+//             "metadata": {
+//                 "venturemark.co/user": "usr-pp9mk"
+//                 "venturemark.co/unixtime": "1604959525"
+//             }
+//             "property": {
+//                 "name": "monthly recurring revenue"
+//             }
+//         }
+//     }
+//
+message UpdateI {
+  UpdateI_API api = 1;
+  UpdateI_Obj obj = 2;
+}
+
+message UpdateI_API {}
+
+message UpdateI_Obj {
+  map<string, string> metadata = 1;
+  UpdateI_Obj_Property property = 2;
+}
+
+message UpdateI_Obj_Property {
+  string text = 1;
+}
+
+// UpdateO is the output for updating timelines. The response will contain
+// object metadata to indicate if the timeline got in fact updated. The example
+// below indicates that the timeline got updated. That is, the name changed.
+//
+//     {
+//         "obj": {
+//             "metadata": {
+//                 "timeline.venturemark.co/status": "updated"
+//             }
+//     }
+//
+message UpdateO {
+  UpdateO_API api = 1;
+  UpdateO_Obj obj = 2;
+}
+
+message UpdateO_API {}
+
+message UpdateO_Obj {
+  map<string, string> metadata = 1;
+}

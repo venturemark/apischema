@@ -1,0 +1,91 @@
+syntax = "proto3";
+
+package timeline;
+option go_package = ".;timeline";
+
+// SearchI is the input for searching timelines. Below is an example to fetch
+// all timelines associated with the specified user.
+//
+//     {
+//         "api": {
+//             "chunking": {
+//                 "perpage": "100",
+//                 "pointer": "300"
+//             }
+//         },
+//         "obj": [
+//             {
+//                 "metadata": {
+//                     "venturemark.co/user": "usr-pp9mk"
+//                 }
+//             }
+//         ]
+//     }
+//
+message SearchI {
+  SearchI_API api = 1;
+  repeated SearchI_Obj obj = 2;
+}
+
+message SearchI_API {
+  SearchI_API_Chunking chunking = 1;
+  repeated string operator = 2;
+}
+
+message SearchI_API_Chunking {
+  string pointer = 1;
+  string perpage = 2;
+}
+
+message SearchI_Obj {
+  map<string, string> metadata = 1;
+  SearchI_Obj_Property property = 2;
+}
+
+message SearchI_Obj_Property {}
+
+// SearchO is the output for searching timelines. Below is an example showing a
+// list of objects associated with the requested user.
+//
+//     {
+//         "api": {
+//             "chunking": {
+//                 "perpage": "100",
+//                 "pointer": "300"
+//             }
+//         },
+//         "obj": [
+//             {
+//                 "metadata": {
+//                     ...
+//                 },
+//                 "property": {
+//                     "name": "monthly recurring revenue"
+//                 }
+//             },
+//             ...
+//         ]
+//     }
+//
+message SearchO {
+  SearchO_API api = 1;
+  repeated SearchO_Obj obj = 2;
+}
+
+message SearchO_API {
+  SearchO_API_Chunking chunking = 1;
+}
+
+message SearchO_API_Chunking {
+  string pointer = 1;
+  string perpage = 2;
+}
+
+message SearchO_Obj {
+  map<string, string> metadata = 1;
+  SearchO_Obj_Property property = 2;
+}
+
+message SearchO_Obj_Property {
+  string text = 1;
+}

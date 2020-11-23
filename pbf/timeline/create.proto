@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package timeline;
+option go_package = ".;timeline";
+
+// CreateI is the input for creating timelines. Below is an example JSON
+// representation showing an emitted timeline. The name in the example expresses
+// the context of this particular timeline.
+//
+//     {
+//         "obj": {
+//             "metadata": {
+//                 "venturemark.co/user": "usr-pp9mk"
+//             }
+//             "property": {
+//                 "name": "monthly recurring revenue"
+//             }
+//         }
+//     }
+//
+message CreateI {
+  CreateI_API api = 1;
+  CreateI_Obj obj = 2;
+}
+
+message CreateI_API {}
+
+message CreateI_Obj {
+  map<string, string> metadata = 1;
+  CreateI_Obj_Property property = 2;
+}
+
+message CreateI_Obj_Property {
+  string text = 1;
+}
+
+// CreateO is the output for creating timeline. Only the exact unix timestamp of
+// creation is returned with the object metadata when successfully creating a
+// timeline.
+//
+//     {
+//         "obj": {
+//             "metadata": {
+//                 "venturemark.co/unixtime": "1604959525"
+//             }
+//         }
+//     }
+//
+message CreateO {
+  CreateO_API api = 1;
+  CreateO_Obj obj = 2;
+}
+
+message CreateO_API {}
+
+message CreateO_Obj {
+  map<string, string> metadata = 1;
+}

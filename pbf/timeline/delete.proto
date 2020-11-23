@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+package timeline;
+option go_package = ".;timeline";
+
+message DeleteI {}
+message DeleteO {}

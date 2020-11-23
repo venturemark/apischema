@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package timeline;
+option go_package = ".;timeline";
+
+import "pbf/timeline/create.proto";
+import "pbf/timeline/delete.proto";
+import "pbf/timeline/search.proto";
+import "pbf/timeline/update.proto";
+
+service API {
+  rpc Create(CreateI) returns (CreateO) {}
+  rpc Delete(DeleteI) returns (DeleteO) {}
+  rpc Search(SearchI) returns (SearchO) {}
+  rpc Update(UpdateI) returns (UpdateO) {}
+}
