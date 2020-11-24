@@ -87,5 +87,5 @@ message SearchO_Obj {
 }
 
 message SearchO_Obj_Property {
-  string text = 1;
+  string name = 1;
 }

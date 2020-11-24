@@ -31,7 +31,7 @@ message CreateI_Obj {
 }
 
 message CreateI_Obj_Property {
-  string text = 1;
+  string name = 1;
 }
 
 // CreateO is the output for creating timeline. Only the exact unix timestamp of
