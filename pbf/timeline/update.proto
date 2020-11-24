@@ -31,7 +31,7 @@ message UpdateI_Obj {
 }
 
 message UpdateI_Obj_Property {
-  string text = 1;
+  string name = 1;
 }
 
 // UpdateO is the output for updating timelines. The response will contain
