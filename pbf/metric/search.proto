@@ -17,7 +17,8 @@ option go_package = ".;metric";
 //         "obj": [
 //             {
 //                 "metadata": {
-//                     "venturemark.co/timeline": "tml-kn433"
+//                     "timeline.venturemark.co/id": "1606396471",
+//                     "user.venturemark.co/id": "usr-al9qy"
 //                 }
 //             }
 //         ]
@@ -58,7 +59,9 @@ message SearchI_Obj_Property {}
 //         "obj": [
 //             {
 //                 "metadata": {
-//                     ...
+//                     "metric.venturemark.co/id": "1606400781",
+//                     "timeline.venturemark.co/id": "1606396471",
+//                     "user.venturemark.co/id": "usr-al9qy"
 //                 },
 //                 "property": {
 //                     "data": [
