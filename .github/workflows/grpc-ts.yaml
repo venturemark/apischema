@@ -12,6 +12,8 @@ on:
     branches:
       - "main"
       - "master"
+    paths:
+      - "**.proto"
 
 jobs:
   grpc-ts:
