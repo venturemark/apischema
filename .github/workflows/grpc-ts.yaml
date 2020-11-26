@@ -31,7 +31,7 @@ jobs:
       - name: "Setup Ts Env"
         uses: "actions/setup-node@v1"
         with:
-          node-version: "15.x.x"
+          node-version: "14.x.x"
 
       - name: Install Protoc Binary
         working-directory: ${{ runner.temp }}
@@ -94,9 +94,11 @@ jobs:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
         run: |
           cd "${{ runner.temp }}/venturemark/apigents/"
-          git add .
-          git commit -m 'update generated code'
-          git push
+          if [[ $(git status --porcelain) ]]; then
+            git add .
+            git commit -m 'update generated code'
+            git push
+          fi
 
       - name: Cleanup Build Container
         env:
