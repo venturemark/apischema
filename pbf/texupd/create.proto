@@ -10,6 +10,8 @@ option go_package = ".;texupd";
 //     {
 //         "obj": {
 //             "metadata": {
+//                 "audience.venturemark.co/id": "aud-klc5p"
+//                 "organization.venturemark.co/id": "org-pl142"
 //                 "timeline.venturemark.co/id": "1606396471",
 //                 "user.venturemark.co/id": "usr-al9qy"
 //             }
