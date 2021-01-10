@@ -3,8 +3,5 @@ syntax = "proto3";
 package update;
 option go_package = ".;update";
 
-// Updates are not meant to be created on their own. Creating an update means to
-// create a metric update. See pbf/metupd for more information.
-
 message CreateI {}
 message CreateO {}
