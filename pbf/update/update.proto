@@ -3,8 +3,5 @@ syntax = "proto3";
 package update;
 option go_package = ".;update";
 
-// Updates are not supported to be updated at this point in time. The apischema
-// and its corresponding implementation might change that in the future.
-
 message UpdateI {}
 message UpdateO {}

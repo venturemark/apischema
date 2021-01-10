@@ -3,8 +3,5 @@ syntax = "proto3";
 package update;
 option go_package = ".;update";
 
-// Updates are not meant to be deleted on their own. Deleting an update means to
-// delete a metric update. See pbf/metupd for more information.
-
 message DeleteI {}
 message DeleteO {}

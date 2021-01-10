@@ -3,8 +3,5 @@ syntax = "proto3";
 package metric;
 option go_package = ".;metric";
 
-// Metrics are not meant to be created on their own. Creating a metric means to
-// create a metric update. See pbf/metupd for more information.
-
 message CreateI {}
 message CreateO {}
