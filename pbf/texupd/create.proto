@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package texupd;
+option go_package = ".;texupd";
+
+// CreateI is the input for creating text updates. That is persisting text a
+// user adds to a timeline. Below is an example JSON representation showing an
+// emitted text update.
+//
+//     {
+//         "obj": {
+//             "metadata": {
+//                 "timeline.venturemark.co/id": "1606396471",
+//                 "user.venturemark.co/id": "usr-al9qy"
+//             }
+//             "property": {
+//                 "text": "Lorem ipsum ..."
+//             }
+//         }
+//     }
+//
+message CreateI {
+  CreateI_API api = 1;
+  CreateI_Obj obj = 2;
+}
+
+message CreateI_API {}
+
+message CreateI_Obj {
+  map<string, string> metadata = 1;
+  CreateI_Obj_Property property = 2;
+}
+
+message CreateI_Obj_Property {
+  string text = 1;
+}
+
+// CreateO is the output for creating text updates. Only the exact unix
+// timestamp of creation is returned with the object metadata when successfully
+// creating a text update.
+//
+//     {
+//         "obj": {
+//             "metadata": {
+//                 "update.venturemark.co/id": "1606400781"
+//             }
+//         }
+//     }
+//
+message CreateO {
+  CreateO_API api = 1;
+  CreateO_Obj obj = 2;
+}
+
+message CreateO_API {}
+
+message CreateO_Obj {
+  map<string, string> metadata = 1;
+}

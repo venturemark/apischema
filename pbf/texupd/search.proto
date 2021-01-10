@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package texupd;
+option go_package = ".;texupd";
+
+// Text updates are not meant to be searched on their own. Searching a text
+// update means to search an update separately. See pbf/update for more
+// information.
+
+message SearchI {}
+message SearchO {}
