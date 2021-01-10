@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+package audience;
+option go_package = ".;audience";
+
+message UpdateI {}
+message UpdateO {}
