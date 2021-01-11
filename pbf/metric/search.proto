@@ -17,6 +17,7 @@ option go_package = ".;metric";
 //         "obj": [
 //             {
 //                 "metadata": {
+//                     "audience.venturemark.co/id": "1606396471",
 //                     "timeline.venturemark.co/id": "1606396471",
 //                     "user.venturemark.co/id": "usr-al9qy"
 //                 }
@@ -59,6 +60,7 @@ message SearchI_Obj_Property {}
 //         "obj": [
 //             {
 //                 "metadata": {
+//                     "audience.venturemark.co/id": "1606396471",
 //                     "metric.venturemark.co/id": "1606400781",
 //                     "timeline.venturemark.co/id": "1606396471",
 //                     "user.venturemark.co/id": "usr-al9qy"
