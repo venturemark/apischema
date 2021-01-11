@@ -1,0 +1,100 @@
+syntax = "proto3";
+
+package message;
+option go_package = ".;message";
+
+// SearchI is the input for searching messages.
+//
+//     {
+//         "api": {
+//             "chunking": {
+//                 "perpage": "100",
+//                 "pointer": "300"
+//             }
+//         },
+//         "obj": [
+//             {
+//                 "metadata": {
+//                     "audience.venturemark.co/id": "<id>",
+//                     "organization.venturemark.co/id": "<id>",
+//                     "timeline.venturemark.co/id": "<id>",
+//                     "update.venturemark.co/id": "<id>",
+//                     "user.venturemark.co/id": "<id>"
+//                 }
+//             }
+//         ]
+//     }
+//
+message SearchI {
+  SearchI_API api = 1;
+  repeated SearchI_Obj obj = 2;
+}
+
+message SearchI_API {
+  SearchI_API_Chunking chunking = 1;
+  repeated string operator = 2;
+}
+
+message SearchI_API_Chunking {
+  string pointer = 1;
+  string perpage = 2;
+}
+
+message SearchI_Obj {
+  map<string, string> metadata = 1;
+  SearchI_Obj_Property property = 2;
+}
+
+message SearchI_Obj_Property {}
+
+// SearchO is the output for searching messages.
+//
+//     {
+//         "api": {
+//             "chunking": {
+//                 "perpage": "100",
+//                 "pointer": "300"
+//             }
+//         },
+//         "obj": [
+//             {
+//                 "metadata": {
+//                     "audience.venturemark.co/id": "<id>",
+//                     "message.venturemark.co/id": "<id>",
+//                     "organization.venturemark.co/id": "<id>",
+//                     "timeline.venturemark.co/id": "<id>",
+//                     "update.venturemark.co/id": "<id>",
+//                     "user.venturemark.co/id": "<id>"
+//                 },
+//                 "property": {
+//                     "text": "This is a great idea! Love it. :hugging-face:",
+//                     "reid": "<id>"
+//                 }
+//             },
+//             ...
+//         ]
+//     }
+//
+message SearchO {
+  SearchO_API api = 1;
+  repeated SearchO_Obj obj = 2;
+}
+
+message SearchO_API {
+  SearchO_API_Chunking chunking = 1;
+}
+
+message SearchO_API_Chunking {
+  string pointer = 1;
+  string perpage = 2;
+}
+
+message SearchO_Obj {
+  map<string, string> metadata = 1;
+  SearchO_Obj_Property property = 2;
+}
+
+message SearchO_Obj_Property {
+  string name = 1;
+  string reid = 2;
+}
