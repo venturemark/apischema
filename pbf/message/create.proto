@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+package message;
+option go_package = ".;message";
+
+// CreateI is the input for creating messages. A message may only be text
+// writtnby the user. A message may be a reply to a preceding message.
+//
+//     {
+//         "obj": {
+//             "metadata": {
+//                 "audience.venturemark.co/id": "<id>",
+//                 "organization.venturemark.co/id": "<id>",
+//                 "timeline.venturemark.co/id": "<id>",
+//                 "update.venturemark.co/id": "<id>",
+//                 "user.venturemark.co/id": "<id>"
+//             },
+//             "property": {
+//                 "text": "This is a great idea! Love it. :hugging-face:",
+//                 "reid": "<id>"
+//             }
+//         }
+//     }
+//
+message CreateI {
+  CreateI_API api = 1;
+  CreateI_Obj obj = 2;
+}
+
+message CreateI_API {}
+
+message CreateI_Obj {
+  map<string, string> metadata = 1;
+  CreateI_Obj_Property property = 2;
+}
+
+message CreateI_Obj_Property {
+  string name = 1;
+  string reid = 2;
+}
+
+// CreateO is the output for creating messages. Only the exact unix timestamp
+// of creation is returned with the object metadata when successfully creating
+// an audience.
+//
+//     {
+//         "obj": {
+//             "metadata": {
+//                 "message.venturemark.co/id": "<id>"
+//             }
+//         }
+//     }
+//
+message CreateO {
+  CreateO_API api = 1;
+  CreateO_Obj obj = 2;
+}
+
+message CreateO_API {}
+
+message CreateO_Obj {
+  map<string, string> metadata = 1;
+}
