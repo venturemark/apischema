@@ -31,7 +31,7 @@ message DeleteI_Obj {
 //     {
 //         "obj": {
 //             "metadata": {
-//                 "audience.venturemark.co/status": "deleted",
+//                 "audience.venturemark.co/status": "deleted"
 //             }
 //         }
 //     }
