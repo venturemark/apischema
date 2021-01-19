@@ -35,9 +35,9 @@ message UpdateI_Obj {
 }
 
 message UpdateI_Obj_Property {
-  string desc = 1;
-  string name = 2;
-  string stat = 3;
+  optional string desc = 1;
+  optional string name = 2;
+  optional string stat = 3;
 }
 
 // UpdateO is the output for updating timelines. The response will contain
