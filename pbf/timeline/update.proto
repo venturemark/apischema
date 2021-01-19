@@ -3,8 +3,8 @@ syntax = "proto3";
 package timeline;
 option go_package = ".;timeline";
 
-// UpdateI is the input for updating timelines. Only the name of a timeline may
-// change.
+// UpdateI is the input for updating timelines. Properties may be modified
+// independently.
 //
 //     {
 //         "obj": {
@@ -15,7 +15,9 @@ option go_package = ".;timeline";
 //                 "user.venturemark.co/id": "<id>"
 //             }
 //             "property": {
-//                 "name": "monthly recurring revenue"
+//                 "desc": "Lorem ipsum ...",
+//                 "name": "monthly recurring revenue",
+//                 "stat": "archived"
 //             }
 //         }
 //     }
@@ -33,7 +35,9 @@ message UpdateI_Obj {
 }
 
 message UpdateI_Obj_Property {
-  string name = 1;
+  string desc = 1;
+  string name = 2;
+  string stat = 3;
 }
 
 // UpdateO is the output for updating timelines. The response will contain

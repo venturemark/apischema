@@ -15,6 +15,7 @@ option go_package = ".;timeline";
 //                 "user.venturemark.co/id": "<id>"
 //             },
 //             "property": {
+//                 "desc": "Lorem ipsum ...",
 //                 "name": "monthly recurring revenue"
 //             }
 //         }
@@ -33,7 +34,8 @@ message CreateI_Obj {
 }
 
 message CreateI_Obj_Property {
-  string name = 1;
+  string desc = 1;
+  string name = 2;
 }
 
 // CreateO is the output for creating timeline. Only the exact unix timestamp of
