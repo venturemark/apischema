@@ -65,7 +65,9 @@ message SearchI_Obj_Property {}
 //                     "user.venturemark.co/id": "<id>"
 //                 },
 //                 "property": {
-//                     "name": "monthly recurring revenue"
+//                     "desc": "Lorem ipsum ...",
+//                     "name": "monthly recurring revenue",
+//                     "stat": "archived"
 //                 }
 //             },
 //             ...
@@ -92,5 +94,7 @@ message SearchO_Obj {
 }
 
 message SearchO_Obj_Property {
-  string name = 1;
+  string desc = 1;
+  string name = 2;
+  string stat = 3;
 }
