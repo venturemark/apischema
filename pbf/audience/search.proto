@@ -62,6 +62,10 @@ message SearchI_Obj_Property {}
 //                 },
 //                 "property": {
 //                     "name": "monthly recurring revenue",
+//                     "tmln": [
+//                         "<id>",
+//                         "<id>"
+//                     ],
 //                     "user": [
 //                         "<id>",
 //                         "<id>"
@@ -93,5 +97,6 @@ message SearchO_Obj {
 
 message SearchO_Obj_Property {
   string name = 1;
-  repeated string user = 2;
+  repeated string tmln = 2;
+  repeated string user = 3;
 }

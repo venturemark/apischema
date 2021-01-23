@@ -13,6 +13,10 @@ option go_package = ".;audience";
 //             },
 //             "property": {
 //                 "name": "Employees",
+//                 "tmln": [
+//                     "<id>",
+//                     "<id>"
+//                 ],
 //                 "user": [
 //                     "<id>",
 //                     "<id>"
@@ -35,7 +39,8 @@ message CreateI_Obj {
 
 message CreateI_Obj_Property {
   string name = 1;
-  repeated string user = 2;
+  repeated string tmln = 2;
+  repeated string user = 3;
 }
 
 // CreateO is the output for creating audiences. Only the exact unix timestamp
