@@ -14,6 +14,20 @@ clang-format -i --style=google $(find ./pbf -name "*.proto")
 
 
 
+### JSON-Patch
+
+Complex updates require JSON-Patch operations. If a resource for instance
+defines a list of strings it would require the whole list to be provided only in
+order to add or remove a single item of that resource's list property. For such
+operations the resource's service in question provides the option of JSON-Patch
+operations.
+
+- https://tools.ietf.org/html/rfc6902
+- https://github.com/evanphx/json-patch
+- https://github.com/Starcounter-Jack/JSON-Patch
+
+
+
 ### Operators
 
 Filter operators we support are defined as follows.

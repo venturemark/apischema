@@ -3,5 +3,67 @@ syntax = "proto3";
 package audience;
 option go_package = ".;audience";
 
-message UpdateI {}
-message UpdateO {}
+// UpdateI is the input for updating audiences.
+//
+//     {
+//         "obj": {
+//             "metadata": {
+//                 "organization.venturemark.co/id": "<id>",
+//                 "user.venturemark.co/id": "<id>"
+//             },
+//             "jsnpatch": [
+//                 {
+//                     "ope": "add",
+//                     "pat": "/user",
+//                     "val": "xh3b4sd"
+//                 },
+//                 {
+//                     "ope": "remove",
+//                     "pat": "/user",
+//                     "val": "marcoelli"
+//                 }
+//             ]
+//         }
+//     }
+//
+message UpdateI {
+  UpdateI_API api = 1;
+  UpdateI_Obj obj = 2;
+}
+
+message UpdateI_API {}
+
+message UpdateI_Obj {
+  map<string, string> metadata = 1;
+  repeated UpdateI_Obj_Jsnpatch jsnpatch = 2;
+}
+
+message UpdateI_Obj_Jsnpatch {
+  string ope = 1;
+  string pat = 2;
+  optional string val = 3;
+}
+
+// UpdateO is the output for updating audiences. The response will contain
+// object metadata to indicate if the audience got in fact updated. The example
+// below indicates that the audience got updated. That is, the list of users
+// changed.
+//
+//     {
+//         "obj": {
+//             "metadata": {
+//                 "audience.venturemark.co/status": "updated"
+//             }
+//         }
+//     }
+//
+message UpdateO {
+  UpdateO_API api = 1;
+  UpdateO_Obj obj = 2;
+}
+
+message UpdateO_API {}
+
+message UpdateO_Obj {
+  map<string, string> metadata = 1;
+}
