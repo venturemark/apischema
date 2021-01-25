@@ -17,7 +17,6 @@ option go_package = ".;update";
 //         "obj": [
 //             {
 //                 "metadata": {
-//                     "audience.venturemark.co/id": "<id>",
 //                     "organization.venturemark.co/id": "<id>",
 //                     "timeline.venturemark.co/id": "<id>",
 //                     "user.venturemark.co/id": "<id>"
@@ -61,7 +60,6 @@ message SearchI_Obj_Property {}
 //         "obj": [
 //             {
 //                 "metadata": {
-//                     "audience.venturemark.co/id": "<id>",
 //                     "organization.venturemark.co/id": "<id>",
 //                     "timeline.venturemark.co/id": "<id>",
 //                     "update.venturemark.co/id": "<id>",
