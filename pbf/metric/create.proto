@@ -1,7 +1,0 @@
-syntax = "proto3";
-
-package metric;
-option go_package = ".;metric";
-
-message CreateI {}
-message CreateO {}
