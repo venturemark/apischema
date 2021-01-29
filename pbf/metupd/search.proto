@@ -1,7 +1,0 @@
-syntax = "proto3";
-
-package metupd;
-option go_package = ".;metupd";
-
-message SearchI {}
-message SearchO {}
