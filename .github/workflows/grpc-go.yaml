@@ -5,7 +5,7 @@
 #     workflow create grpcgo -o venturemark -r apigengo -s
 #
 
-name: "gprc-go"
+name: "grpc-go"
 
 on:
   push:
