@@ -93,7 +93,5 @@ message SearchO_Obj {
 }
 
 message SearchO_Obj_Property {
-  // text contains the update part of the metric update. The string provided is
-  // the user's natural language in written form.
   string text = 1;
 }
