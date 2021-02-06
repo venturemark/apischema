@@ -5,7 +5,7 @@
 #     workflow create grpcts -o venturemark -r apigents -s
 #
 
-name: gprc-ts
+name: "gprc-ts"
 
 on:
   push:
@@ -17,49 +17,49 @@ on:
 
 jobs:
   grpc-ts:
-    runs-on: ubuntu-latest
+    runs-on: "ubuntu-latest"
     steps:
 
-      - name: Checkout Git Project
-        uses: actions/checkout@v2
+      - name: "Setup Git Project"
+        uses: "actions/checkout@v2"
 
-      - name: Setup Go Env
-        uses: actions/setup-go@v2
+      - name: "Setup Go Env"
+        uses: "actions/setup-go@v2"
         with:
           go-version: "1.15.2"
 
-      - name: "Setup Ts Env"
-        uses: "actions/setup-node@v1"
+      - name: "Setup Typescript Env"
+        uses: "actions/setup-node@v2"
         with:
           node-version: "14.x.x"
 
-      - name: Install Protoc Binary
-        working-directory: ${{ runner.temp }}
+      - name: "Install Protoc Binary"
+        working-directory: "${{ runner.temp }}"
         run: |
           curl -LOs https://github.com/protocolbuffers/protobuf/releases/download/v3.13.0/protoc-3.13.0-linux-x86_64.zip
           unzip protoc-3.13.0-linux-x86_64.zip
           echo "${{ runner.temp }}/bin/" >> $GITHUB_PATH
 
-      - name: Install gRPC Dependencies
-        working-directory: ${{ runner.temp }}
+      - name: "Install gRPC Dependencies"
+        working-directory: "${{ runner.temp }}"
         run: |
           curl -LOs https://github.com/grpc/grpc-web/releases/download/1.2.1/protoc-gen-grpc-web-1.2.1-linux-x86_64
           chmod +x protoc-gen-grpc-web-1.2.1-linux-x86_64
           mv protoc-gen-grpc-web-1.2.1-linux-x86_64 ${{ runner.temp }}/bin/protoc-gen-grpc-web
           echo "${{ runner.temp }}/bin/" >> $GITHUB_PATH
 
-      - name: "Install Ts Dependencies"
+      - name: "Install Typescript Dependencies"
         run: |
           npm install prettier --global
 
-      - name: Decrypt Private Key
+      - name: "Decrypt Private Key"
         run: |
           go get github.com/xh3b4sd/red
           red decrypt -i .github/asset/venturemark/apigents/id_rsa.enc -o .github/asset/venturemark/apigents/id_rsa -p '${{ secrets.RED_GPG_PASS_VENTUREMARK_APIGENTS }}'
 
-      - name: Setup SSH Agent
+      - name: "Setup SSH Agent"
         env:
-          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+          SSH_AUTH_SOCK: "/tmp/ssh_agent.sock"
         run: |
           mkdir -p ~/.ssh
           ssh-keyscan github.com >> ~/.ssh/known_hosts
@@ -67,31 +67,31 @@ jobs:
           chmod 0600 .github/asset/venturemark/apigents/id_rsa
           ssh-add .github/asset/venturemark/apigents/id_rsa
 
-      - name: Clone Ts Code
+      - name: "Clone Typescript Code"
         env:
-          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+          SSH_AUTH_SOCK: "/tmp/ssh_agent.sock"
         run: git clone git@github.com:venturemark/apigents.git "${{ runner.temp }}/venturemark/apigents/"
 
-      - name: Setup Git Config
+      - name: "Setup Git Config"
         run: |
           cd "${{ runner.temp }}/venturemark/apigents/"
           git config user.name "${GITHUB_ACTOR}"
           git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
           git remote set-url origin git@github.com:venturemark/apigents.git
 
-      - name: Generate Ts Code
+      - name: "Generate Typescript Code"
         run: |
           go get github.com/xh3b4sd/pag
           rm -rf ${{ runner.temp }}/venturemark/apigents/src/
           pag generate typescript -d ${{ runner.temp }}/venturemark/apigents/src/
 
-      - name: "Format Ts Code"
+      - name: "Format Typescript Code"
         run: |
           prettier -w $(find ${{ runner.temp }}/venturemark/apigents/src/ -name "*.ts" -o -name "*.tsx")
 
-      - name: Commit And Push
+      - name: "Commit And Push"
         env:
-          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+          SSH_AUTH_SOCK: "/tmp/ssh_agent.sock"
         run: |
           cd "${{ runner.temp }}/venturemark/apigents/"
           if [[ $(git status --porcelain) ]]; then
@@ -100,9 +100,9 @@ jobs:
             git push
           fi
 
-      - name: Cleanup Build Container
+      - name: "Cleanup Build Container"
         env:
-          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+          SSH_AUTH_SOCK: "/tmp/ssh_agent.sock"
         run: |
           ssh-add -D
           rm -Rf *
