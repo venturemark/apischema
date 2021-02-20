@@ -18,8 +18,7 @@ option go_package = ".;update";
 //             {
 //                 "metadata": {
 //                     "organization.venturemark.co/id": "<id>",
-//                     "timeline.venturemark.co/id": "<id>",
-//                     "user.venturemark.co/id": "<id>"
+//                     "timeline.venturemark.co/id": "<id>"
 //                 }
 //             }
 //         ]
@@ -62,8 +61,7 @@ message SearchI_Obj_Property {}
 //                 "metadata": {
 //                     "organization.venturemark.co/id": "<id>",
 //                     "timeline.venturemark.co/id": "<id>",
-//                     "update.venturemark.co/id": "<id>",
-//                     "user.venturemark.co/id": "<id>"
+//                     "update.venturemark.co/id": "<id>"
 //                 },
 //                 "property": {
 //                     "text": "Lorem ipsum ..."
