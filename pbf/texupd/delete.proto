@@ -10,8 +10,7 @@ option go_package = ".;texupd";
 //             "metadata": {
 //                 "organization.venturemark.co/id": "<id>",
 //                 "timeline.venturemark.co/id": "<id>",
-//                 "update.venturemark.co/id": "<id>",
-//                 "user.venturemark.co/id": "<id>"
+//                 "update.venturemark.co/id": "<id>"
 //             }
 //         }
 //     }
