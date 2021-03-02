@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+package role;
+option go_package = ".;role";
+
+// CreateI is the input for creating roles.
+//
+//     {
+//         "obj": [
+//             {
+//                 "metadata": {
+//                     "venture.venturemark.co/id": "<id>"
+//                 },
+//                 "property": {
+//                     "kin": "owner",
+//                     "res": "venture",
+//                     "sub": "google|123456"
+//                 }
+//             }
+//         ]
+//     }
+//
+message CreateI {
+  CreateI_API api = 1;
+  repeated CreateI_Obj obj = 2;
+}
+
+message CreateI_API {}
+
+message CreateI_Obj {
+  map<string, string> metadata = 1;
+  CreateI_Obj_Property property = 2;
+}
+
+message CreateI_Obj_Property {
+  string kin = 1;
+  string res = 2;
+  string sub = 3;
+}
+
+// CreateO is the output for creating roles. Only the exact unix timestamp
+// of creation is returned with the object metadata when successfully creating
+// an role.
+//
+//     {
+//         "obj": [
+//             {
+//                 "metadata": {
+//                     "role.venturemark.co/id": "<id>"
+//                 }
+//             }
+//         ]
+//     }
+//
+message CreateO {
+  CreateO_API api = 1;
+  repeated CreateO_Obj obj = 2;
+}
+
+message CreateO_API {}
+
+message CreateO_Obj {
+  map<string, string> metadata = 1;
+}
