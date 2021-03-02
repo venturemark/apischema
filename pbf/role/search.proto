@@ -15,8 +15,7 @@ option go_package = ".;role";
 //         "obj": [
 //             {
 //                 "metadata": {
-//                     "role.venturemark.co/kind": "owner",
-//                     "venture.venturemark.co/id": "<id>"
+//                     "subject.venturemark.co/id": "<id>"
 //                 }
 //             }
 //         ]
@@ -57,12 +56,12 @@ message SearchI_Obj_Property {}
 //             {
 //                 "metadata": {
 //                     "role.venturemark.co/id": "<id>",
+//                     "subject.venturemark.co/id": "<id>",
 //                     "venture.venturemark.co/id": "<id>"
 //                 },
 //                 "property": {
 //                     "kin": "owner",
-//                     "res": "venture",
-//                     "sub": "google|123456"
+//                     "res": "venture"
 //                 }
 //             },
 //             ...
@@ -91,5 +90,4 @@ message SearchO_Obj {
 message SearchO_Obj_Property {
   string kin = 1;
   string res = 2;
-  string sub = 3;
 }

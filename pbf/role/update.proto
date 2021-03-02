@@ -10,6 +10,7 @@ option go_package = ".;role";
 //             {
 //                 "metadata": {
 //                     "role.venturemark.co/id": "<id>",
+//                     "subject.venturemark.co/id": "<id>",
 //                     "venture.venturemark.co/id": "<id>"
 //                 },
 //                 "jsnpatch": [
