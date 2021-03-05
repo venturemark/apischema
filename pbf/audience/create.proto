@@ -8,7 +8,7 @@ option go_package = ".;audience";
 //     {
 //         "obj": {
 //             "metadata": {
-//                 "organization.venturemark.co/id": "<id>"
+//                 "venture.venturemark.co/id": "<id>"
 //             },
 //             "property": {
 //                 "name": "Employees",
