@@ -15,7 +15,7 @@ option go_package = ".;role";
 //         "obj": [
 //             {
 //                 "metadata": {
-//                     "subject.venturemark.co/id": "<id>"
+//                     "venture.venturemark.co/id": "<id>"
 //                 }
 //             }
 //         ]
