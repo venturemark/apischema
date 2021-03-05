@@ -9,9 +9,9 @@ option go_package = ".;texupd";
 //     {
 //         "obj": {
 //             "metadata": {
-//                 "organization.venturemark.co/id": "<id>",
 //                 "timeline.venturemark.co/id": "<id>",
-//                 "update.venturemark.co/id": "<id>"
+//                 "update.venturemark.co/id": "<id>",
+//                 "venture.venturemark.co/id": "<id>"
 //             },
 //             "property": {
 //                 "text": "Lorem ipsum ..."
