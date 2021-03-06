@@ -9,6 +9,7 @@ option go_package = ".;role";
 //         "obj": [
 //             {
 //                 "metadata": {
+//                     "resource.venturemark.co/kind": "venture",
 //                     "role.venturemark.co/id": "<id>",
 //                     "venture.venturemark.co/id": "<id>"
 //                 }
