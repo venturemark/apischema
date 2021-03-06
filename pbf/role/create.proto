@@ -12,12 +12,10 @@ option go_package = ".;role";
 //         "obj": [
 //             {
 //                 "metadata": {
+//                     "resource.venturemark.co/kind": "venture",
+//                     "role.venturemark.co/kind": "owner",
 //                     "subject.venturemark.co/id": "<id>",
 //                     "venture.venturemark.co/id": "<id>"
-//                 },
-//                 "property": {
-//                     "kin": "owner",
-//                     "res": "venture"
 //                 }
 //             }
 //         ]
@@ -32,12 +30,6 @@ message CreateI_API {}
 
 message CreateI_Obj {
   map<string, string> metadata = 1;
-  CreateI_Obj_Property property = 2;
-}
-
-message CreateI_Obj_Property {
-  string kin = 1;
-  string res = 2;
 }
 
 // CreateO is the output for creating roles. Only the exact unix timestamp

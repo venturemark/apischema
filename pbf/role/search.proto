@@ -15,6 +15,7 @@ option go_package = ".;role";
 //         "obj": [
 //             {
 //                 "metadata": {
+//                     "resource.venturemark.co/kind": "venture",
 //                     "venture.venturemark.co/id": "<id>"
 //                 }
 //             }
@@ -38,10 +39,7 @@ message SearchI_API_Chunking {
 
 message SearchI_Obj {
   map<string, string> metadata = 1;
-  SearchI_Obj_Property property = 2;
 }
-
-message SearchI_Obj_Property {}
 
 // SearchO is the output for searching roles.
 //
@@ -55,16 +53,13 @@ message SearchI_Obj_Property {}
 //         "obj": [
 //             {
 //                 "metadata": {
+//                     "resource.venturemark.co/kind": "venture",
 //                     "role.venturemark.co/id": "<id>",
+//                     "role.venturemark.co/kind": "owner",
 //                     "subject.venturemark.co/id": "<id>",
 //                     "venture.venturemark.co/id": "<id>"
-//                 },
-//                 "property": {
-//                     "kin": "owner",
-//                     "res": "venture"
 //                 }
-//             },
-//             ...
+//             }
 //         ]
 //     }
 //
@@ -84,10 +79,4 @@ message SearchO_API_Chunking {
 
 message SearchO_Obj {
   map<string, string> metadata = 1;
-  SearchO_Obj_Property property = 2;
-}
-
-message SearchO_Obj_Property {
-  string kin = 1;
-  string res = 2;
 }
