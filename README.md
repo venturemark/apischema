@@ -83,3 +83,23 @@ requested data objects.
     ]
 }
 ```
+
+
+
+### Visibility
+
+Resource visibility may be defined via resource metadata. Below is shown how to
+mark any resource as being publicly available.
+
+```
+"resource.venturemark.co/visibility": "public"
+```
+
+The equivalent for private resources may be similarly defined via resource
+metadata. Below is shown how to mark any resource as being privately available.
+Note that not defining the resource visibility metadata is equivalent to marking
+a resource to be private.
+
+```
+"resource.venturemark.co/visibility": "private"
+```
