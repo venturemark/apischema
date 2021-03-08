@@ -6,29 +6,31 @@ option go_package = ".;audience";
 // UpdateI is the input for updating audiences.
 //
 //     {
-//         "obj": {
-//             "metadata": {
-//                 "audience.venturemark.co/id": "<id>",
-//                 "venture.venturemark.co/id": "<id>"
-//             },
-//             "jsnpatch": [
-//                 {
-//                     "ope": "add",
-//                     "pat": "/obj/property/user/-",
-//                     "val": "xh3b4sd"
+//         "obj": [
+//             {
+//                 "metadata": {
+//                     "audience.venturemark.co/id": "<id>",
+//                     "venture.venturemark.co/id": "<id>"
 //                 },
-//                 {
-//                     "ope": "remove",
-//                     "pat": "/obj/property/user/0",
-//                     "val": "marcoelli"
-//                 }
-//             ]
-//         }
+//                 "jsnpatch": [
+//                     {
+//                         "ope": "add",
+//                         "pat": "/obj/property/user/-",
+//                         "val": "xh3b4sd"
+//                     },
+//                     {
+//                         "ope": "remove",
+//                         "pat": "/obj/property/user/0",
+//                         "val": "marcoelli"
+//                     }
+//                 ]
+//             }
+//         ]
 //     }
 //
 message UpdateI {
   UpdateI_API api = 1;
-  UpdateI_Obj obj = 2;
+  repeated UpdateI_Obj obj = 2;
 }
 
 message UpdateI_API {}
@@ -50,16 +52,18 @@ message UpdateI_Obj_Jsnpatch {
 // changed.
 //
 //     {
-//         "obj": {
-//             "metadata": {
-//                 "audience.venturemark.co/status": "updated"
+//         "obj": [
+//             {
+//                 "metadata": {
+//                     "audience.venturemark.co/status": "updated"
+//                 }
 //             }
-//         }
+//         ]
 //     }
 //
 message UpdateO {
   UpdateO_API api = 1;
-  UpdateO_Obj obj = 2;
+  repeated UpdateO_Obj obj = 2;
 }
 
 message UpdateO_API {}

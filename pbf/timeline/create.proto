@@ -8,20 +8,22 @@ option go_package = ".;timeline";
 // the context of this particular timeline.
 //
 //     {
-//         "obj": {
-//             "metadata": {
-//                 "venture.venturemark.co/id": "<id>"
-//             },
-//             "property": {
-//                 "desc": "Lorem ipsum ...",
-//                 "name": "monthly recurring revenue"
+//         "obj": [
+//             {
+//                 "metadata": {
+//                     "venture.venturemark.co/id": "<id>"
+//                 },
+//                 "property": {
+//                     "desc": "Lorem ipsum ...",
+//                     "name": "monthly recurring revenue"
+//                 }
 //             }
-//         }
+//         ]
 //     }
 //
 message CreateI {
   CreateI_API api = 1;
-  CreateI_Obj obj = 2;
+  repeated CreateI_Obj obj = 2;
 }
 
 message CreateI_API {}
@@ -41,16 +43,18 @@ message CreateI_Obj_Property {
 // timeline.
 //
 //     {
-//         "obj": {
-//             "metadata": {
-//                 "timeline.venturemark.co/id": "<id>"
+//         "obj": [
+//             {
+//                 "metadata": {
+//                     "timeline.venturemark.co/id": "<id>"
+//                 }
 //             }
-//         }
+//         ]
 //     }
 //
 message CreateO {
   CreateO_API api = 1;
-  CreateO_Obj obj = 2;
+  repeated CreateO_Obj obj = 2;
 }
 
 message CreateO_API {}
