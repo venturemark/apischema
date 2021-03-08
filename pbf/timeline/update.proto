@@ -7,35 +7,39 @@ option go_package = ".;timeline";
 // independently.
 //
 //     {
-//         "obj": {
-//             "metadata": {
-//                 "timeline.venturemark.co/id": "<id>",
-//                 "venture.venturemark.co/id": "<id>"
+//         "obj": [
+//             {
+//                 "metadata": {
+//                     "timeline.venturemark.co/id": "<id>",
+//                     "venture.venturemark.co/id": "<id>"
+//                 },
+//                 "jsnpatch": [
+//                     {
+//                         "ope": "replace",
+//                         "pat": "/obj/property/stat",
+//                         "val": "archived"
+//                     }
+//                 ]
 //             }
-//             "property": {
-//                 "desc": "Lorem ipsum ...",
-//                 "name": "monthly recurring revenue",
-//                 "stat": "archived"
-//             }
-//         }
+//         ]
 //     }
 //
 message UpdateI {
   UpdateI_API api = 1;
-  UpdateI_Obj obj = 2;
+  repeated UpdateI_Obj obj = 2;
 }
 
 message UpdateI_API {}
 
 message UpdateI_Obj {
   map<string, string> metadata = 1;
-  UpdateI_Obj_Property property = 2;
+  repeated UpdateI_Obj_Jsnpatch jsnpatch = 2;
 }
 
-message UpdateI_Obj_Property {
-  optional string desc = 1;
-  optional string name = 2;
-  optional string stat = 3;
+message UpdateI_Obj_Jsnpatch {
+  string ope = 1;
+  string pat = 2;
+  optional string val = 3;
 }
 
 // UpdateO is the output for updating timelines. The response will contain
@@ -43,15 +47,18 @@ message UpdateI_Obj_Property {
 // below indicates that the timeline got updated. That is, the name changed.
 //
 //     {
-//         "obj": {
-//             "metadata": {
-//                 "timeline.venturemark.co/status": "updated"
+//         "obj": [
+//             {
+//                 "metadata": {
+//                     "update.venturemark.co/status": "updated"
+//                 }
 //             }
+//         ]
 //     }
 //
 message UpdateO {
   UpdateO_API api = 1;
-  UpdateO_Obj obj = 2;
+  repeated UpdateO_Obj obj = 2;
 }
 
 message UpdateO_API {}
