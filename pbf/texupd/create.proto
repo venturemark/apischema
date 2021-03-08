@@ -8,20 +8,22 @@ option go_package = ".;texupd";
 // emitted text update.
 //
 //     {
-//         "obj": {
-//             "metadata": {
-//                 "timeline.venturemark.co/id": "<id>",
-//                 "venture.venturemark.co/id": "<id>"
-//             },
-//             "property": {
-//                 "text": "Lorem ipsum ..."
+//         "obj": [
+//             {
+//                 "metadata": {
+//                     "timeline.venturemark.co/id": "<id>",
+//                     "venture.venturemark.co/id": "<id>"
+//                 },
+//                 "property": {
+//                     "text": "Lorem ipsum ..."
+//                 }
 //             }
-//         }
+//         ]
 //     }
 //
 message CreateI {
   CreateI_API api = 1;
-  CreateI_Obj obj = 2;
+  repeated CreateI_Obj obj = 2;
 }
 
 message CreateI_API {}
@@ -40,16 +42,18 @@ message CreateI_Obj_Property {
 // creating a text update.
 //
 //     {
-//         "obj": {
-//             "metadata": {
-//                 "update.venturemark.co/id": "<id>"
+//         "obj": [
+//             {
+//                 "metadata": {
+//                     "update.venturemark.co/id": "<id>"
+//                 }
 //             }
-//         }
+//         ]
 //     }
 //
 message CreateO {
   CreateO_API api = 1;
-  CreateO_Obj obj = 2;
+  repeated CreateO_Obj obj = 2;
 }
 
 message CreateO_API {}

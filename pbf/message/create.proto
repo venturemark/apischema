@@ -7,22 +7,24 @@ option go_package = ".;message";
 // writtnby the user. A message may be a reply to a preceding message.
 //
 //     {
-//         "obj": {
-//             "metadata": {
-//                 "timeline.venturemark.co/id": "<id>",
-//                 "update.venturemark.co/id": "<id>",
-//                 "venture.venturemark.co/id": "<id>"
-//             },
-//             "property": {
-//                 "text": "This is a great idea! Love it. :hugging-face:",
-//                 "reid": "<id>"
+//         "obj": [
+//             {
+//                 "metadata": {
+//                     "timeline.venturemark.co/id": "<id>",
+//                     "update.venturemark.co/id": "<id>",
+//                     "venture.venturemark.co/id": "<id>"
+//                 },
+//                 "property": {
+//                     "text": "This is a great idea! Love it. :hugging-face:",
+//                     "reid": "<id>"
+//                 }
 //             }
-//         }
+//         ]
 //     }
 //
 message CreateI {
   CreateI_API api = 1;
-  CreateI_Obj obj = 2;
+  repeated CreateI_Obj obj = 2;
 }
 
 message CreateI_API {}
@@ -42,16 +44,18 @@ message CreateI_Obj_Property {
 // a message.
 //
 //     {
-//         "obj": {
-//             "metadata": {
-//                 "message.venturemark.co/id": "<id>"
+//         "obj": [
+//             {
+//                 "metadata": {
+//                     "message.venturemark.co/id": "<id>"
+//                 }
 //             }
-//         }
+//         ]
 //     }
 //
 message CreateO {
   CreateO_API api = 1;
-  CreateO_Obj obj = 2;
+  repeated CreateO_Obj obj = 2;
 }
 
 message CreateO_API {}

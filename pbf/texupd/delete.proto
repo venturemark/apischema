@@ -6,18 +6,20 @@ option go_package = ".;texupd";
 // DeleteI is the input for deleting text updates.
 //
 //     {
-//         "obj": {
-//             "metadata": {
-//                 "timeline.venturemark.co/id": "<id>",
-//                 "update.venturemark.co/id": "<id>",
-//                 "venture.venturemark.co/id": "<id>"
+//         "obj": [
+//             {
+//                 "metadata": {
+//                     "timeline.venturemark.co/id": "<id>",
+//                     "update.venturemark.co/id": "<id>",
+//                     "venture.venturemark.co/id": "<id>"
+//                 }
 //             }
-//         }
+//         ]
 //     }
 //
 message DeleteI {
   DeleteI_API api = 1;
-  DeleteI_Obj obj = 2;
+  repeated DeleteI_Obj obj = 2;
 }
 
 message DeleteI_API {}
@@ -29,16 +31,18 @@ message DeleteI_Obj {
 // DeleteO is the output for deleting text updates.
 //
 //     {
-//         "obj": {
-//             "metadata": {
-//                 "update.venturemark.co/status": "deleted"
+//         "obj": [
+//             {
+//                 "metadata": {
+//                     "update.venturemark.co/status": "deleted"
+//                 }
 //             }
-//         }
+//         ]
 //     }
 //
 message DeleteO {
   DeleteO_API api = 1;
-  DeleteO_Obj obj = 2;
+  repeated DeleteO_Obj obj = 2;
 }
 
 message DeleteO_API {}

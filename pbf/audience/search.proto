@@ -69,8 +69,7 @@ message SearchI_Obj_Property {}
 //                         "<id>"
 //                     ]
 //                 }
-//             },
-//             ...
+//             }
 //         ]
 //     }
 //
