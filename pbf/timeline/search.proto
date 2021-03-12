@@ -65,8 +65,7 @@ message SearchI_Obj_Property {}
 //                     "name": "monthly recurring revenue",
 //                     "stat": "archived"
 //                 }
-//             },
-//             ...
+//             }
 //         ]
 //     }
 //

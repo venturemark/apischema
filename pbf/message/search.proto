@@ -66,8 +66,7 @@ message SearchI_Obj_Property {}
 //                     "text": "This is a great idea! Love it. :hugging-face:",
 //                     "reid": "<id>"
 //                 }
-//             },
-//             ...
+//             }
 //         ]
 //     }
 //

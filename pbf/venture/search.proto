@@ -1,11 +1,10 @@
 syntax = "proto3";
 
-package update;
-option go_package = ".;update";
+package venture;
+option go_package = ".;venture";
 
-// SearchI is the input for searching updates. That is looking up the user's
-// written update in natural language associated with a timeline. Below is an
-// example to fetch all updates associated with the specified timeline.
+// SearchI is the input for searching ventures. Below is an example to fetch
+// all ventures associated with the specified user.
 //
 //     {
 //         "api": {
@@ -13,15 +12,7 @@ option go_package = ".;update";
 //                 "perpage": "100",
 //                 "pointer": "300"
 //             }
-//         },
-//         "obj": [
-//             {
-//                 "metadata": {
-//                     "timeline.venturemark.co/id": "<id>",
-//                     "venture.venturemark.co/id": "<id>"
-//                 }
-//             }
-//         ]
+//         }
 //     }
 //
 message SearchI {
@@ -46,8 +37,8 @@ message SearchI_Obj {
 
 message SearchI_Obj_Property {}
 
-// SearchO is the output for searching updates. Below is an example showing a
-// list of objects associated with the requested timeline.
+// SearchO is the output for searching ventures. Below is an example showing a
+// list of objects associated with the requested user.
 //
 //     {
 //         "api": {
@@ -59,12 +50,17 @@ message SearchI_Obj_Property {}
 //         "obj": [
 //             {
 //                 "metadata": {
-//                     "timeline.venturemark.co/id": "<id>",
-//                     "update.venturemark.co/id": "<id>",
 //                     "venture.venturemark.co/id": "<id>"
 //                 },
 //                 "property": {
-//                     "text": "Lorem ipsum ..."
+//                     "desc": "Lorem ipsum ...",
+//                     "link": [
+//                         {
+//                             "addr": "https://twitter.com/ibm",
+//                             "text": "Twitter"
+//                         }
+//                     ],
+//                     "name": "IBM"
 //                 }
 //             }
 //         ]
@@ -90,5 +86,12 @@ message SearchO_Obj {
 }
 
 message SearchO_Obj_Property {
-  string text = 1;
+  string desc = 1;
+  repeated SearchO_Obj_Property_Link link = 2;
+  string name = 3;
+}
+
+message SearchO_Obj_Property_Link {
+  string addr = 1;
+  string text = 2;
 }
