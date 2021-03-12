@@ -1,21 +1,24 @@
 syntax = "proto3";
 
-package timeline;
-option go_package = ".;timeline";
+package venture;
+option go_package = ".;venture";
 
-// CreateI is the input for creating timelines. Below is an example JSON
-// representation showing an emitted timeline. The name in the example expresses
-// the context of this particular timeline.
+// CreateI is the input for creating ventures. Below is an example JSON
+// representation showing an emitted venture. The name in the example expresses
+// the context of this particular venture.
 //
 //     {
 //         "obj": [
 //             {
-//                 "metadata": {
-//                     "venture.venturemark.co/id": "<id>"
-//                 },
 //                 "property": {
 //                     "desc": "Lorem ipsum ...",
-//                     "name": "monthly recurring revenue"
+//                     "link": [
+//                         {
+//                             "addr": "https://twitter.com/ibm",
+//                             "text": "Twitter"
+//                         }
+//                     ],
+//                     "name": "IBM"
 //                 }
 //             }
 //         ]
@@ -35,18 +38,24 @@ message CreateI_Obj {
 
 message CreateI_Obj_Property {
   string desc = 1;
-  string name = 2;
+  repeated CreateI_Obj_Property_Link link = 2;
+  string name = 3;
 }
 
-// CreateO is the output for creating timelines. Only the exact unix timestamp of
+message CreateI_Obj_Property_Link {
+  string addr = 1;
+  string text = 2;
+}
+
+// CreateO is the output for creating ventures. Only the exact unix timestamp of
 // creation is returned with the object metadata when successfully creating a
-// timeline.
+// venture.
 //
 //     {
 //         "obj": [
 //             {
 //                 "metadata": {
-//                     "timeline.venturemark.co/id": "<id>"
+//                     "venture.venturemark.co/id": "<id>"
 //                 }
 //             }
 //         ]

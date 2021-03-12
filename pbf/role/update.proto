@@ -44,7 +44,7 @@ message UpdateI_Obj_Jsnpatch {
 
 // UpdateO is the output for updating roles. The response will contain object
 // metadata to indicate if the role got in fact updated. The example below
-// indicates that the role got updated. That is, the kind changed.
+// indicates that the role got updated.
 //
 //     {
 //         "obj": [

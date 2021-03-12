@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package venture;
+option go_package = ".;venture";
+
+// DeleteI is the input for deleting ventures.
+//
+//     {
+//         "obj": [
+//             {
+//                 "metadata": {
+//                     "venture.venturemark.co/id": "<id>"
+//                 }
+//             }
+//         ]
+//     }
+//
+message DeleteI {
+  DeleteI_API api = 1;
+  repeated DeleteI_Obj obj = 2;
+}
+
+message DeleteI_API {}
+
+message DeleteI_Obj {
+  map<string, string> metadata = 1;
+}
+
+// DeleteO is the output for deleting ventures.
+//
+//     {
+//         "obj": [
+//             {
+//                 "metadata": {
+//                     "venture.venturemark.co/status": "deleted"
+//                 }
+//             }
+//         ]
+//     }
+//
+message DeleteO {
+  DeleteO_API api = 1;
+  repeated DeleteO_Obj obj = 2;
+}
+
+message DeleteO_API {}
+
+message DeleteO_Obj {
+  map<string, string> metadata = 1;
+}

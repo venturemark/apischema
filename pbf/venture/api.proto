@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package venture;
+option go_package = ".;venture";
+
+import "pbf/venture/create.proto";
+import "pbf/venture/delete.proto";
+import "pbf/venture/search.proto";
+import "pbf/venture/update.proto";
+
+service API {
+  rpc Create(CreateI) returns (CreateO) {}
+  rpc Delete(DeleteI) returns (DeleteO) {}
+  rpc Search(SearchI) returns (SearchO) {}
+  rpc Update(UpdateI) returns (UpdateO) {}
+}

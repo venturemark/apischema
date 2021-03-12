@@ -1,27 +1,22 @@
 syntax = "proto3";
 
-package audience;
-option go_package = ".;audience";
+package venture;
+option go_package = ".;venture";
 
-// UpdateI is the input for updating audiences.
+// UpdateI is the input for updating ventures. Properties may be modified
+// independently.
 //
 //     {
 //         "obj": [
 //             {
 //                 "metadata": {
-//                     "audience.venturemark.co/id": "<id>",
 //                     "venture.venturemark.co/id": "<id>"
 //                 },
 //                 "jsnpatch": [
 //                     {
-//                         "ope": "add",
-//                         "pat": "/obj/property/user/-",
-//                         "val": "xh3b4sd"
-//                     },
-//                     {
-//                         "ope": "remove",
-//                         "pat": "/obj/property/user/0",
-//                         "val": "marcoelli"
+//                         "ope": "replace",
+//                         "pat": "/obj/property/desc",
+//                         "val": "Lorem ipsum ..."
 //                     }
 //                 ]
 //             }
@@ -46,15 +41,15 @@ message UpdateI_Obj_Jsnpatch {
   optional string val = 3;
 }
 
-// UpdateO is the output for updating audiences. The response will contain
-// object metadata to indicate if the audience got in fact updated. The example
-// below indicates that the audience got updated.
+// UpdateO is the output for updating ventures. The response will contain object
+// metadata to indicate if the venture got in fact updated. The example below
+// indicates that the venture got updated.
 //
 //     {
 //         "obj": [
 //             {
 //                 "metadata": {
-//                     "audience.venturemark.co/status": "updated"
+//                     "venture.venturemark.co/status": "updated"
 //                 }
 //             }
 //         ]
