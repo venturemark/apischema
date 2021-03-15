@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package user;
+option go_package = ".;user";
+
+// UpdateI is the input for updating ventures. Properties may be modified
+// independently.
+//
+//     {
+//         "obj": [
+//             {
+//                 "metadata": {
+//                     "user.venturemark.co/id": "<id>"
+//                 },
+//                 "jsnpatch": [
+//                     {
+//                         "ope": "replace",
+//                         "pat": "/obj/property/desc",
+//                         "val": "Lorem ipsum ..."
+//                     }
+//                 ]
+//             }
+//         ]
+//     }
+//
+message UpdateI {
+  UpdateI_API api = 1;
+  repeated UpdateI_Obj obj = 2;
+}
+
+message UpdateI_API {}
+
+message UpdateI_Obj {
+  map<string, string> metadata = 1;
+  repeated UpdateI_Obj_Jsnpatch jsnpatch = 2;
+}
+
+message UpdateI_Obj_Jsnpatch {
+  string ope = 1;
+  string pat = 2;
+  optional string val = 3;
+}
+
+// UpdateO is the output for updating ventures. The response will contain object
+// metadata to indicate if the user got in fact updated. The example below
+// indicates that the user got updated.
+//
+//     {
+//         "obj": [
+//             {
+//                 "metadata": {
+//                     "user.venturemark.co/status": "updated"
+//                 }
+//             }
+//         ]
+//     }
+//
+message UpdateO {
+  UpdateO_API api = 1;
+  repeated UpdateO_Obj obj = 2;
+}
+
+message UpdateO_API {}
+
+message UpdateO_Obj {
+  map<string, string> metadata = 1;
+}

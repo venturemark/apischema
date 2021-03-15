@@ -1,0 +1,104 @@
+syntax = "proto3";
+
+package user;
+option go_package = ".;user";
+
+// SearchI is the input for searching users. Below is an example to fetch a
+// particular user by its ID.
+//
+//     {
+//         "api": {
+//             "chunking": {
+//                 "perpage": "100",
+//                 "pointer": "300"
+//             }
+//         },
+//         "obj": [
+//             {
+//                 "metadata": {
+//                     "user.venturemark.co/id": "<id>"
+//                 }
+//             }
+//         }
+//     }
+//
+message SearchI {
+  SearchI_API api = 1;
+  repeated SearchI_Obj obj = 2;
+}
+
+message SearchI_API {
+  SearchI_API_Chunking chunking = 1;
+  repeated string operator = 2;
+}
+
+message SearchI_API_Chunking {
+  string pointer = 1;
+  string perpage = 2;
+}
+
+message SearchI_Obj {
+  map<string, string> metadata = 1;
+  SearchI_Obj_Property property = 2;
+}
+
+message SearchI_Obj_Property {}
+
+// SearchO is the output for searching users. Below is an example showing a list
+// of objects associated with the requested user.
+//
+//     {
+//         "api": {
+//             "chunking": {
+//                 "perpage": "100",
+//                 "pointer": "300"
+//             }
+//         },
+//         "obj": [
+//             {
+//                 "metadata": {
+//                     "user.venturemark.co/id": "<id>"
+//                 },
+//                 "property": {
+//                     "desc": "Lorem ipsum ...",
+//                     "name": "Arvind Krishna",
+//                     "prof": [
+//                         {
+//                             "desc": "CEO"
+//                             "vent": "IBM"
+//                         }
+//                     ]
+//                 }
+//             }
+//         ]
+//     }
+//
+message SearchO {
+  SearchO_API api = 1;
+  repeated SearchO_Obj obj = 2;
+}
+
+message SearchO_API {
+  SearchO_API_Chunking chunking = 1;
+}
+
+message SearchO_API_Chunking {
+  string pointer = 1;
+  string perpage = 2;
+}
+
+message SearchO_Obj {
+  map<string, string> metadata = 1;
+  SearchO_Obj_Property property = 2;
+}
+
+message SearchO_Obj_Property {
+  string desc = 1;
+  string name = 2;
+  repeated SearchO_Obj_Property_Prof prof = 3;
+}
+
+message SearchO_Obj_Property_Prof {
+  string desc = 1;
+  string vent = 2;
+}
