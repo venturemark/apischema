@@ -1,0 +1,72 @@
+syntax = "proto3";
+
+package user;
+option go_package = ".;user";
+
+// CreateI is the input for creating users. Below is an example JSON
+// representation showing an emitted user.
+//
+//     {
+//         "obj": [
+//             {
+//                 "property": {
+//                     "desc": "Lorem ipsum ...",
+//                     "name": "Arvind Krishna",
+//                     "prof": [
+//                         {
+//                             "desc": "CEO"
+//                             "vent": "IBM"
+//                         }
+//                     ]
+//                 }
+//             }
+//         ]
+//     }
+//
+message CreateI {
+  CreateI_API api = 1;
+  repeated CreateI_Obj obj = 2;
+}
+
+message CreateI_API {}
+
+message CreateI_Obj {
+  map<string, string> metadata = 1;
+  CreateI_Obj_Property property = 2;
+}
+
+message CreateI_Obj_Property {
+  string desc = 1;
+  string name = 2;
+  repeated CreateI_Obj_Property_Prof prof = 3;
+}
+
+message CreateI_Obj_Property_Prof {
+  string desc = 1;
+  string vent = 2;
+}
+
+// CreateO is the output for creating users. Only the exact unix timestamp of
+// creation is returned with the object metadata when successfully creating a
+// user.
+//
+//     {
+//         "obj": [
+//             {
+//                 "metadata": {
+//                     "user.venturemark.co/id": "<id>"
+//                 }
+//             }
+//         ]
+//     }
+//
+message CreateO {
+  CreateO_API api = 1;
+  repeated CreateO_Obj obj = 2;
+}
+
+message CreateO_API {}
+
+message CreateO_Obj {
+  map<string, string> metadata = 1;
+}
