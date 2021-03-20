@@ -3,5 +3,7 @@ syntax = "proto3";
 package update;
 option go_package = ".;update";
 
+// TODO test
+
 message UpdateI {}
 message UpdateO {}
