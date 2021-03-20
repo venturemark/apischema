@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package venture;
-option go_package = ".;venture";
+option go_package = "./;venture";
 
 // UpdateI is the input for updating ventures. Properties may be modified
 // independently.

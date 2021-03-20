@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package invite;
-option go_package = ".;invite";
+option go_package = "./;invite";
 
 import "pbf/invite/create.proto";
 import "pbf/invite/delete.proto";

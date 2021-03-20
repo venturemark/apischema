@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package texupd;
-option go_package = ".;texupd";
+option go_package = "./;texupd";
 
 // CreateI is the input for creating text updates. That is persisting text a
 // user adds to a timeline. Below is an example JSON representation showing an

@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package timeline;
-option go_package = ".;timeline";
+option go_package = "./;timeline";
 
 import "pbf/timeline/create.proto";
 import "pbf/timeline/delete.proto";

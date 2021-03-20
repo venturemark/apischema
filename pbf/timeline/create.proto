@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package timeline;
-option go_package = ".;timeline";
+option go_package = "./;timeline";
 
 // CreateI is the input for creating timelines. Below is an example JSON
 // representation showing an emitted timeline. The name in the example expresses
@@ -38,8 +38,8 @@ message CreateI_Obj_Property {
   string name = 2;
 }
 
-// CreateO is the output for creating timelines. Only the exact unix timestamp of
-// creation is returned with the object metadata when successfully creating a
+// CreateO is the output for creating timelines. Only the exact unix timestamp
+// of creation is returned with the object metadata when successfully creating a
 // timeline.
 //
 //     {

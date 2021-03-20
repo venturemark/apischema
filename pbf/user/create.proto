@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package user;
-option go_package = ".;user";
+option go_package = "./;user";
 
 // CreateI is the input for creating users. Below is an example JSON
 // representation showing an emitted user.

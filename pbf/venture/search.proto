@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package venture;
-option go_package = ".;venture";
+option go_package = "./;venture";
 
 // SearchI is the input for searching ventures. Below is an example to fetch a
 // particular venture by its ID.

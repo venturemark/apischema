@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package venture;
-option go_package = ".;venture";
+option go_package = "./;venture";
 
 // CreateI is the input for creating ventures. Below is an example JSON
 // representation showing an emitted venture. The name in the example expresses
