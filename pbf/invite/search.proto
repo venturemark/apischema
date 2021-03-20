@@ -22,6 +22,26 @@ option go_package = ".;invite";
 //         ]
 //     }
 //
+// Invites can also be searched by email. Below is an example to fetch the
+// invite of a user associated with the specified venture.
+//
+//     {
+//         "api": {
+//             "chunking": {
+//                 "perpage": "100",
+//                 "pointer": "300"
+//             }
+//         },
+//         "obj": [
+//             {
+//                 "metadata": {
+//                     "subject.venturemark.co/email": "user@site.net",
+//                     "venture.venturemark.co/id": "<id>"
+//                 }
+//             }
+//         }
+//     }
+//
 message SearchI {
   SearchI_API api = 1;
   repeated SearchI_Obj obj = 2;

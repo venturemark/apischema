@@ -35,16 +35,15 @@ message CreateI_Obj_Property {
   string mail = 1;
 }
 
-// CreateO is the output for creating invites. The exact unix timestamp of
-// creation is returned with the object metadata when successfully creating a
-// invite. The response does also contain an invite code for external use.
+// CreateO is the output for creating invites. Only the exact unix timestamp of
+// creation is returned with the object metadata when successfully creating an
+// invite.
 //
 //     {
 //         "obj": [
 //             {
 //                 "metadata": {
-//                     "invite.venturemark.co/id": "<id>",
-//                     "invite.venturemark.co/code": "al9qy"
+//                     "invite.venturemark.co/id": "<id>"
 //                 }
 //             }
 //         ]

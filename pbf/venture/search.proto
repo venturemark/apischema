@@ -22,7 +22,7 @@ option go_package = ".;venture";
 //         }
 //     }
 //
-// Ventures can also be searched by user. Below is an example to fetch a all
+// Ventures can also be searched by user. Below is an example to fetch all
 // ventures a user is part of. Note that the user ID must be provided with the
 // subject ID metadata.
 //
