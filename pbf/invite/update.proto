@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package invite;
-option go_package = ".;invite";
+option go_package = "./;invite";
 
 // UpdateI is the input for updating invites. Properties may be modified
 // independently.
