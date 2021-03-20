@@ -109,5 +109,5 @@ message SearchO_Obj {
 
 message SearchO_Obj_Property {
   string mail = 1;
-  string stat = 3;
+  string stat = 2;
 }
