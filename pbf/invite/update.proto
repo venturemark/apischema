@@ -1,23 +1,23 @@
 syntax = "proto3";
 
-package timeline;
-option go_package = ".;timeline";
+package invite;
+option go_package = ".;invite";
 
-// UpdateI is the input for updating timelines. Properties may be modified
+// UpdateI is the input for updating invites. Properties may be modified
 // independently.
 //
 //     {
 //         "obj": [
 //             {
 //                 "metadata": {
-//                     "timeline.venturemark.co/id": "<id>",
+//                     "invite.venturemark.co/id": "<id>",
 //                     "venture.venturemark.co/id": "<id>"
 //                 },
 //                 "jsnpatch": [
 //                     {
 //                         "ope": "replace",
 //                         "pat": "/obj/property/stat",
-//                         "val": "archived"
+//                         "val": "accepted"
 //                     }
 //                 ]
 //             }
@@ -42,15 +42,15 @@ message UpdateI_Obj_Jsnpatch {
   optional string val = 3;
 }
 
-// UpdateO is the output for updating timelines. The response will contain
-// object metadata to indicate if the timeline got in fact updated. The example
-// below indicates that the timeline got updated.
+// UpdateO is the output for updating invites. The response will contain object
+// metadata to indicate if the invite got in fact updated. The example below
+// indicates that the invite got updated.
 //
 //     {
 //         "obj": [
 //             {
 //                 "metadata": {
-//                     "timeline.venturemark.co/status": "updated"
+//                     "invite.venturemark.co/status": "updated"
 //                 }
 //             }
 //         ]

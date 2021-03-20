@@ -1,10 +1,10 @@
 syntax = "proto3";
 
-package venture;
-option go_package = ".;venture";
+package invite;
+option go_package = ".;invite";
 
-// SearchI is the input for searching ventures. Below is an example to fetch a
-// particular venture by its ID.
+// SearchI is the input for searching invites. Below is an example to fetch all
+// invites associated with the specified venture.
 //
 //     {
 //         "api": {
@@ -19,12 +19,11 @@ option go_package = ".;venture";
 //                     "venture.venturemark.co/id": "<id>"
 //                 }
 //             }
-//         }
+//         ]
 //     }
 //
-// Ventures can also be searched by user. Below is an example to fetch all
-// ventures a user is part of. Note that the user ID must be provided with the
-// subject ID metadata.
+// Invites can also be searched by email. Below is an example to fetch the
+// invite of a user associated with the specified venture.
 //
 //     {
 //         "api": {
@@ -36,7 +35,8 @@ option go_package = ".;venture";
 //         "obj": [
 //             {
 //                 "metadata": {
-//                     "subject.venturemark.co/id": "<id>"
+//                     "subject.venturemark.co/email": "user@site.net",
+//                     "venture.venturemark.co/id": "<id>"
 //                 }
 //             }
 //         }
@@ -64,7 +64,7 @@ message SearchI_Obj {
 
 message SearchI_Obj_Property {}
 
-// SearchO is the output for searching ventures. Below is an example showing a
+// SearchO is the output for searching invites. Below is an example showing a
 // list of objects associated with the requested user.
 //
 //     {
@@ -77,17 +77,12 @@ message SearchI_Obj_Property {}
 //         "obj": [
 //             {
 //                 "metadata": {
+//                     "invite.venturemark.co/id": "<id>",
 //                     "venture.venturemark.co/id": "<id>"
 //                 },
 //                 "property": {
-//                     "desc": "Lorem ipsum ...",
-//                     "link": [
-//                         {
-//                             "addr": "https://twitter.com/ibm",
-//                             "text": "Twitter"
-//                         }
-//                     ],
-//                     "name": "IBM"
+//                     "mail": "user@site.net",
+//                     "stat": "pending"
 //                 }
 //             }
 //         ]
@@ -113,12 +108,6 @@ message SearchO_Obj {
 }
 
 message SearchO_Obj_Property {
-  string desc = 1;
-  repeated SearchO_Obj_Property_Link link = 2;
-  string name = 3;
-}
-
-message SearchO_Obj_Property_Link {
-  string addr = 1;
-  string text = 2;
+  string mail = 1;
+  string stat = 2;
 }

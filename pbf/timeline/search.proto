@@ -4,7 +4,7 @@ package timeline;
 option go_package = ".;timeline";
 
 // SearchI is the input for searching timelines. Below is an example to fetch
-// all timelines associated with the specified user.
+// all timelines associated with the specified venture.
 //
 //     {
 //         "api": {
