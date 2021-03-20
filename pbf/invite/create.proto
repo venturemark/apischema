@@ -4,8 +4,7 @@ package invite;
 option go_package = ".;invite";
 
 // CreateI is the input for creating invites. Below is an example JSON
-// representation showing an emitted invite. The name in the example expresses
-// the context of this particular invite.
+// representation showing an emitted invite.
 //
 //     {
 //         "obj": [
