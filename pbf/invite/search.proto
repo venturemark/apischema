@@ -1,10 +1,10 @@
 syntax = "proto3";
 
-package timeline;
-option go_package = ".;timeline";
+package invite;
+option go_package = ".;invite";
 
-// SearchI is the input for searching timelines. Below is an example to fetch
-// all timelines associated with the specified venture.
+// SearchI is the input for searching invites. Below is an example to fetch all
+// invites associated with the specified venture.
 //
 //     {
 //         "api": {
@@ -44,7 +44,7 @@ message SearchI_Obj {
 
 message SearchI_Obj_Property {}
 
-// SearchO is the output for searching timelines. Below is an example showing a
+// SearchO is the output for searching invites. Below is an example showing a
 // list of objects associated with the requested user.
 //
 //     {
@@ -57,13 +57,12 @@ message SearchI_Obj_Property {}
 //         "obj": [
 //             {
 //                 "metadata": {
-//                     "timeline.venturemark.co/id": "<id>",
+//                     "invite.venturemark.co/id": "<id>",
 //                     "venture.venturemark.co/id": "<id>"
 //                 },
 //                 "property": {
-//                     "desc": "Lorem ipsum ...",
-//                     "name": "monthly recurring revenue",
-//                     "stat": "archived"
+//                     "mail": "user@site.net",
+//                     "stat": "pending"
 //                 }
 //             }
 //         ]
@@ -89,7 +88,6 @@ message SearchO_Obj {
 }
 
 message SearchO_Obj_Property {
-  string desc = 1;
-  string name = 2;
+  string mail = 1;
   string stat = 3;
 }
