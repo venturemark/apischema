@@ -13,7 +13,7 @@ option go_package = "./;invite";
 //                     "venture.venturemark.co/id": "<id>"
 //                 },
 //                 "property": {
-//                     "mail": "user@site.net",
+//                     "mail": "user@site.net"
 //                 }
 //             }
 //         ]
@@ -43,6 +43,7 @@ message CreateI_Obj_Property {
 //         "obj": [
 //             {
 //                 "metadata": {
+//                     "invite.venturemark.co/code": "<code>",
 //                     "invite.venturemark.co/id": "<id>"
 //                 }
 //             }

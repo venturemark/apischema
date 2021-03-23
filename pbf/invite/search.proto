@@ -77,6 +77,7 @@ message SearchI_Obj_Property {}
 //         "obj": [
 //             {
 //                 "metadata": {
+//                     "invite.venturemark.co/code": "<code>",
 //                     "invite.venturemark.co/id": "<id>",
 //                     "venture.venturemark.co/id": "<id>"
 //                 },
