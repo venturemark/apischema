@@ -4,12 +4,14 @@ package invite;
 option go_package = "./;invite";
 
 // UpdateI is the input for updating invites. Properties may be modified
-// independently.
+// independently. Note that for accepting the invite the invite code must be
+// provided for verification.
 //
 //     {
 //         "obj": [
 //             {
 //                 "metadata": {
+//                     "invite.venturemark.co/code": "<code>",
 //                     "invite.venturemark.co/id": "<id>",
 //                     "venture.venturemark.co/id": "<id>"
 //                 },
@@ -44,13 +46,15 @@ message UpdateI_Obj_Jsnpatch {
 
 // UpdateO is the output for updating invites. The response will contain object
 // metadata to indicate if the invite got in fact updated. The example below
-// indicates that the invite got updated.
+// indicates that the invite got updated and that a role for e.g. venture
+// membership got automatically created upon accepting the invite.
 //
 //     {
 //         "obj": [
 //             {
 //                 "metadata": {
-//                     "invite.venturemark.co/status": "updated"
+//                     "invite.venturemark.co/status": "updated",
+//                     "role.venturemark.co/status": "created"
 //                 }
 //             }
 //         ]
