@@ -3,8 +3,9 @@ syntax = "proto3";
 package message;
 option go_package = "./;message";
 
-// UpdateI is the input for updating messages. For more information about
-// messages as a separate resource see create.proto.
+// UpdateI is the input for updating messages. Properties may be modified
+// independently. Note that the reply ID should never change unless you know
+// what you are doing.
 //
 //     {
 //         "obj": [
