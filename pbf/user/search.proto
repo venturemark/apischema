@@ -61,6 +61,7 @@ message SearchI_Obj_Property {}
 //                 },
 //                 "property": {
 //                     "desc": "Lorem ipsum ...",
+//                     "mail": "foo@bar.com",
 //                     "name": "Arvind Krishna",
 //                     "prof": [
 //                         {
@@ -94,8 +95,9 @@ message SearchO_Obj {
 
 message SearchO_Obj_Property {
   string desc = 1;
-  string name = 2;
-  repeated SearchO_Obj_Property_Prof prof = 3;
+  string mail = 2;
+  string name = 3;
+  repeated SearchO_Obj_Property_Prof prof = 4;
 }
 
 message SearchO_Obj_Property_Prof {

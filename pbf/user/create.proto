@@ -11,6 +11,7 @@ option go_package = "./;user";
 //             {
 //                 "property": {
 //                     "desc": "Lorem ipsum ...",
+//                     "mail": "foo@bar.com",
 //                     "name": "Arvind Krishna",
 //                     "prof": [
 //                         {
@@ -37,8 +38,9 @@ message CreateI_Obj {
 
 message CreateI_Obj_Property {
   string desc = 1;
-  string name = 2;
-  repeated CreateI_Obj_Property_Prof prof = 3;
+  string mail = 2;
+  string name = 3;
+  repeated CreateI_Obj_Property_Prof prof = 4;
 }
 
 message CreateI_Obj_Property_Prof {
