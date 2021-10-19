@@ -91,6 +91,12 @@ message SearchO_Obj {
 }
 
 message SearchO_Obj_Property {
-  string head = 1;
-  string text = 2;
+  repeated SearchO_Obj_Property_Link attachments = 1;
+  string head = 2;
+  string text = 3;
+}
+
+message SearchO_Obj_Property_Link {
+  string addr = 1;
+  string type = 2;
 }
